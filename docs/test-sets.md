@@ -1,26 +1,26 @@
-Hands-on · Part 4 of 4
+动手实践 · 第 4 部分（共 4 部分）
 {: .eyebrow }
 
-# 📦 Test Sets
+# 📦 测试集 { #test-sets }
 
-<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">Group, run, and read the results</div>
+<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">分组、运行、解读结果</div>
 
-## 📤 Publish your testing project to the tenant feed
+## 📤 将测试项目发布到租户源 { #publish-your-testing-project-to-the-tenant-feed }
 
-Autopilot builds the test sets from the automated test cases it can find in Orchestrator, and Test Manager runs them from the published package. So publish first.
+Autopilot 会根据它在 Orchestrator 中找到的自动化测试用例来构建测试集，而 Test Manager 则从已发布的包中运行它们。所以，先发布。
 
-1. In **Studio**, with your `{YourName}UiBankTests` project open, select **Publish**.
-2. In **Publish to**, select **Orchestrator Tenant Process Feed**.
-3. Bump the version if you published before, then select **Publish**.
-4. Wait for the confirmation that the package was published.
+1. 在 **Studio** 中打开你的 `{YourName}UiBankTests` 项目，选择 **Publish**（发布）。
+2. 在 **Publish to**（发布到）中，选择 **Orchestrator Tenant Process Feed**（Orchestrator 租户流程源）。
+3. 如果之前发布过，先把版本号调高，然后选择 **Publish**。
+4. 等待包已发布的确认提示。
 
-!!! info "Why the tenant feed"
-    Automated runs of test sets include only the test cases published to the **Orchestrator Tenant Process Feed**, in the latest package version. A package published to your personal workspace feed, or an older version, isn't picked up. Republish after every change to your test cases.
+!!! info "为什么要发布到租户源"
+    测试集的自动化运行只会包含发布到 **Orchestrator Tenant Process Feed** 的最新包版本中的测试用例。发布到个人工作区源的包，或者旧版本的包，都不会被选中。每次修改测试用例后，都要重新发布。
 
-## 🪄 Ask Autopilot in Studio to create test sets
+## 🪄 让 Studio 中的 Autopilot 创建测试集 { #ask-autopilot-in-studio-to-create-test-sets }
 
-1. In **Studio**, open the **Autopilot** panel in your `{YourName}UiBankTests` project.
-2. Give Autopilot this prompt:
+1. 在 **Studio** 中，打开 `{YourName}UiBankTests` 项目里的 **Autopilot** 面板。
+2. 把下面这段提示词交给 Autopilot：
 
     ```text
     In my {YourName}_UIB_Test Test Manager project, create two test sets from the
@@ -31,19 +31,19 @@ Autopilot builds the test sets from the automated test cases it can find in Orch
     Show me the test cases you'll put in each set before you create them.
     ```
 
-3. Check the proposal, then accept it. In Test Manager, open **Test Sets** and confirm both sets exist with the right test cases.
+3. 检查它给出的方案，然后接受。在 Test Manager 中打开 **Test Sets**（测试集），确认两个测试集都已存在，且包含正确的测试用例。
 
-!!! tip "Why a smoke set?"
-    A smoke set answers one question fast: is the application up and can I log in? Run it first. If it fails, there's no point waiting for the full regression set.
+!!! tip "为什么要有冒烟测试集？"
+    冒烟测试集能快速回答一个问题：应用是否正常运行，我能不能登录？先运行它。如果它失败了，就没必要再等完整的回归测试集了。
 
-## ▶️ Run the test sets
+## ▶️ 运行测试集 { #run-the-test-sets }
 
-Test Manager runs automated test cases on a robot in the `{{ training_folder }}` folder, from the package you published to the tenant feed.
+Test Manager 会在 `{{ training_folder }}` 文件夹中的机器人上，使用你发布到租户源的包来运行自动化测试用例。
 
-1. In Test Manager, open **Test Sets**, select **UiBank Smoke**, then **Execute** > **Automated**.
-2. When it passes, run **UiBank Regression** the same way.
+1. 在 Test Manager 中打开 **Test Sets**，选择 **UiBank Smoke**，然后选择 **Execute** > **Automated**（执行 > 自动化）。
+2. 它通过之后，用同样的方式运行 **UiBank Regression**。
 
-=== "Or ask your coding agent"
+=== "或者让你的编码智能体来做"
 
     ```text
     Publish {YourName}UiBankTests to the tenant feed of the {{ training_tenant }}
@@ -55,91 +55,91 @@ Test Manager runs automated test cases on a robot in the `{{ training_folder }}`
     Confirm `uip login status` first, and stop if any step fails.
     ```
 
-    The coding agent loads the `uipath-test` skill and runs `uip rpa pack`, `uip or packages upload`, `uip tm testcases link-automation`, `uip tm testsets run`, and `uip tm wait`.
+    编码智能体会加载 `uipath-test` 技能，并运行 `uip rpa pack`、`uip or packages upload`、`uip tm testcases link-automation`、`uip tm testsets run` 和 `uip tm wait`。
 
-!!! tip "Not enough automated test cases?"
-    Add the trainer's `DemoUiBankTests` test cases instead. Ask Autopilot, or your coding agent, to link the `DemoUiBankTests` package in the `{{ training_folder }}` folder to your Test Manager test cases with the same names, then run the test sets. See [Resources](resources.md).
+!!! tip "自动化测试用例不够？"
+    那就改用讲师提供的 `DemoUiBankTests` 测试用例。让 Autopilot 或你的编码智能体，把 `{{ training_folder }}` 文件夹中的 `DemoUiBankTests` 包关联到你的 Test Manager 中同名的测试用例上，然后运行测试集。参见[资源](resources.md)。
 
-!!! warning "The robot uses your credential asset"
-    The robot reads `{YourName}_UiBankCredential` from the `{{ training_folder }}` folder, just like your local runs did. If the asset lives somewhere else, every test fails in **Given**, before it opens a browser.
+!!! warning "机器人使用的是你的凭据资产"
+    机器人会从 `{{ training_folder }}` 文件夹读取 `{YourName}_UiBankCredential`，和你本地运行时一样。如果该资产放在别处，每个测试都会在打开浏览器之前就在 **Given** 阶段失败。
 
-!!! info "What about manual-only test cases?"
-    An automated execution skips test cases without an automation. To include them, execute the test set **Manually**, or run them autonomously.
+!!! info "只能手动执行的测试用例怎么办？"
+    自动化执行会跳过没有自动化的测试用例。如果要包含它们，请以 **Manually**（手动）方式执行测试集，或者自主运行它们。
 
-## 🔎 Look into the executions of the test sets
+## 🔎 查看测试集的执行 { #look-into-the-executions-of-the-test-sets }
 
-1. In Test Manager, open the **Execution** tab and find the two executions you just started.
-2. Open **UiBank Regression**. Check the result of each test case.
-3. Open a failed test case log, if there is one. Read the failed assertion and its screenshot. Is it the test or UiBank?
-4. Select the results, then select **Generate Insights**. Autopilot builds a report with an **Overview**, **Top Failing Tests**, **Common Errors**, **Error Patterns**, and **Recommendations**.
+1. 在 Test Manager 中打开 **Execution**（执行）选项卡，找到你刚刚启动的两次执行。
+2. 打开 **UiBank Regression**，查看每个测试用例的结果。
+3. 如果有失败的测试用例，打开它的日志。阅读失败的断言及其截图。问题出在测试本身，还是 UiBank？
+4. 选中这些结果，然后选择 **Generate Insights**（生成洞察）。Autopilot 会生成一份报告，包含 **Overview**（概览）、**Top Failing Tests**（失败最多的测试）、**Common Errors**（常见错误）、**Error Patterns**（错误模式）和 **Recommendations**（建议）。
 
-!!! success "Test sets done"
-    Two test sets created by Autopilot, executed from Test Manager on a robot, with a result and evidence for every automated test case.
+!!! success "测试集完成"
+    两个由 Autopilot 创建的测试集，从 Test Manager 在机器人上执行，每个自动化测试用例都有结果和证据。
 
-## 🛠️ Where it usually breaks
+## 🛠️ 常见出错点 { #where-it-usually-breaks }
 
 <div class="fix-grid" markdown>
 
 <div class="fix" markdown>
-<span class="f-title" markdown="span">🚨 Run fails with *"Please assign folder to project level"*</span>
+<span class="f-title" markdown="span">🚨 运行失败，提示 *"Please assign folder to project level"*</span>
 
-<span class="lbl">Cause</span> Your Test Manager project has no default folder
+<span class="lbl">原因</span> 你的 Test Manager 项目没有默认文件夹
 
-<span class="lbl">Fix</span> Set the project's default folder to `{{ training_folder }}`, then run again
-
-</div>
-
-<div class="fix" markdown>
-<span class="f-title" markdown="span">🚨 Autopilot finds no automated test cases for **UiBank Regression**</span>
-
-<span class="lbl">Cause</span> The project isn't published to the tenant feed yet
-
-<span class="lbl">Fix</span> Publish it to the **Orchestrator Tenant Process Feed**, then ask Autopilot again
+<span class="lbl">解决</span> 将项目的默认文件夹设置为 `{{ training_folder }}`，然后重新运行
 
 </div>
 
 <div class="fix" markdown>
-<span class="f-title" markdown="span">🚨 Some test cases have no result</span>
+<span class="f-title" markdown="span">🚨 Autopilot 找不到 **UiBank Regression** 的自动化测试用例</span>
 
-<span class="lbl">Cause</span> They aren't automated, or aren't in the latest published package
+<span class="lbl">原因</span> 项目还没有发布到租户源
 
-<span class="lbl">Fix</span> Publish again to the **Orchestrator Tenant Process Feed**, and check each Studio test case is linked to its Test Manager test case
-
-</div>
-
-<div class="fix" markdown>
-<span class="f-title" markdown="span">🚨 Every test fails in **Given**</span>
-
-<span class="lbl">Cause</span> The robot can't read the credential asset
-
-<span class="lbl">Fix</span> Check the asset name and folder
+<span class="lbl">解决</span> 将其发布到 **Orchestrator Tenant Process Feed**，然后再问一次 Autopilot
 
 </div>
 
 <div class="fix" markdown>
-<span class="f-title" markdown="span">🚨 A test passes alone but fails in the test set</span>
+<span class="f-title" markdown="span">🚨 部分测试用例没有结果</span>
 
-<span class="lbl">Cause</span> It depends on data another test left behind
+<span class="lbl">原因</span> 它们没有自动化，或者不在最新发布的包中
 
-<span class="lbl">Fix</span> Make its **Given** set up everything it needs
-
-</div>
-
-<div class="fix" markdown>
-<span class="f-title" markdown="span">🚨 Upload rejected</span>
-
-<span class="lbl">Cause</span> That package version already exists
-
-<span class="lbl">Fix</span> Bump the project version and publish again
+<span class="lbl">解决</span> 重新发布到 **Orchestrator Tenant Process Feed**，并检查每个 Studio 测试用例是否都已关联到对应的 Test Manager 测试用例
 
 </div>
 
 <div class="fix" markdown>
-<span class="f-title" markdown="span">🚨 Execution stays pending</span>
+<span class="f-title" markdown="span">🚨 每个测试都在 **Given** 阶段失败</span>
 
-<span class="lbl">Cause</span> No robot is free in the folder
+<span class="lbl">原因</span> 机器人无法读取凭据资产
 
-<span class="lbl">Fix</span> Tell the trainer. Robots are shared.
+<span class="lbl">解决</span> 检查资产名称和所在文件夹
+
+</div>
+
+<div class="fix" markdown>
+<span class="f-title" markdown="span">🚨 测试单独运行能通过，放进测试集就失败</span>
+
+<span class="lbl">原因</span> 它依赖其他测试遗留下来的数据
+
+<span class="lbl">解决</span> 让它的 **Given** 把所需的一切都准备好
+
+</div>
+
+<div class="fix" markdown>
+<span class="f-title" markdown="span">🚨 上传被拒绝</span>
+
+<span class="lbl">原因</span> 该包版本已经存在
+
+<span class="lbl">解决</span> 调高项目版本号，然后重新发布
+
+</div>
+
+<div class="fix" markdown>
+<span class="f-title" markdown="span">🚨 执行一直停留在 Pending</span>
+
+<span class="lbl">原因</span> 文件夹中没有空闲的机器人
+
+<span class="lbl">解决</span> 告诉讲师。机器人是大家共享的。
 
 </div>
 

@@ -1,6 +1,6 @@
-site_name: UiPath Agentic Testing with Coding Agents
-site_url: https://madapopescu24.github.io/AgenticTestingWorkshop/
-site_description: Hands-on learner's handbook for planning, automating, executing, and reporting UiPath tests with coding agents
+site_name: UiPath 智能体测试与编码智能体
+site_url: https://vincentzhenguipath.github.io/AgenticTestingWorkshop_SC/
+site_description: 动手实践学员手册：借助编码智能体规划、自动化、执行 UiPath 测试并生成报告（简体中文版）
 site_author: Sergey Shumilov
 
 # hello-world-agent/ is a retired folder the sandbox mount couldn't delete.
@@ -13,6 +13,7 @@ exclude_docs: |
 
 theme:
   name: material
+  language: zh
   logo: assets/images/Partner Success Logo.png
   favicon: assets/images/favicon.png
   font:
@@ -39,7 +40,11 @@ hooks:
 # main.py provides environment variables (training_url, training_tenant, env_label)
 # driven by the COURSE_ENV env var (staging | prod). See main.py.
 plugins:
-  - search
+  - search:
+      lang:
+        - zh
+        - en
+      separator: '[\s​\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - macros:
       module_name: main
 
@@ -64,18 +69,18 @@ markdown_extensions:
 
 # Published navigation only. Work-in-progress pages live in mkdocs.local.yml.
 nav:
-  - Home: index.md
-  - Setup: setup.md
-  - Agenda: agenda.md
-  - Agentic Testing & Coding Agents: what-is-a-coding-agent.md
-  - Testing Setup: agentic-testing-hands-on.md
-  - Requirements: requirements.md
-  - Test Cases: test-cases.md
-  - Executions: executions.md
-  - Test Sets: test-sets.md
-  - SAP Testing: sap-testing.md
-  - Resources: resources.md
-  - Next Steps: next-steps.md
+  - 首页: index.md
+  - 环境准备: setup.md
+  - 议程: agenda.md
+  - 智能体测试与编码智能体: what-is-a-coding-agent.md
+  - 测试准备: agentic-testing-hands-on.md
+  - 需求: requirements.md
+  - 测试用例: test-cases.md
+  - 执行: executions.md
+  - 测试集: test-sets.md
+  - SAP 测试: sap-testing.md
+  - 资源: resources.md
+  - 后续步骤: next-steps.md
 
 extra_css:
   - stylesheets/extra.css

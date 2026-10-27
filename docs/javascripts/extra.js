@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', function () {
     bar.appendChild(b);
     return b;
   }
-  var left = arrow('left', 'Show previous tabs', '‹');
-  var right = arrow('right', 'Show more tabs', '›');
+  var left = arrow('left', '显示前面的标签页', '‹');
+  var right = arrow('right', '显示更多标签页', '›');
 
   function update() {
     var max = list.scrollWidth - list.clientWidth;

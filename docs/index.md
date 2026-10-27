@@ -1,112 +1,112 @@
-UiPath Partner Success · Workshop
+UiPath 合作伙伴成功 · 工作坊
 {: .eyebrow }
 
-# 🧪 UiPath Agentic Testing with Coding Agents
+# 🧪 UiPath 智能体测试与编码智能体 { #uipath-agentic-testing-with-coding-agents }
 
-**Plan, automate, execute, and report on UiPath tests with Autopilot for Testers, Autopilot for Developers, and a coding agent, from a test case design document to an executed test in Test Cloud.**
+**借助 Autopilot for Testers、Autopilot for Developers 和编码智能体，完成 UiPath 测试的规划、自动化、执行与报告——从一份测试用例设计文档出发，直到在 Test Cloud 中完成一次测试执行。**
 
-!!! tip "Training Environment"
-    Log in at **[{{ training_url }}]({{ training_url }})** using tenant **{{ training_tenant }}**.
+!!! tip "培训环境"
+    请访问 **[{{ training_url }}]({{ training_url }})**，使用租户 **{{ training_tenant }}** 登录。
 
-![The agentic testing lifecycle: Setup, Requirements, Test Cases, Executions, and Test Sets, with who does the work at each stage](assets/images/testing-lifecycle.svg){ .lifecycle }
+![智能体测试生命周期：环境准备、需求、测试用例、执行和测试集，并标明每个阶段由谁来完成工作](assets/images/testing-lifecycle.svg){ .lifecycle }
 
-## 🎯 What you'll build
+## 🎯 你将构建什么 { #what-youll-build }
 
-This workshop shows you how AI agents work across **UiPath Test Cloud** for you, and where a tester still makes the call.
+本工作坊将向你展示 AI 智能体如何在 **UiPath Test Cloud** 中替你完成工作，以及哪些地方仍需要测试人员拍板。
 
-- 🤖 **Autopilot** works inside the product. In **Studio** it creates requirements, test cases, and test sets. In **Test Manager** it evaluates requirements, generates test cases, and runs a test case autonomously.
-- 💻 A **coding agent** like **Codex** or **Claude Code** works from your terminal. With the **`uip` CLI** and the **UiPath skills**, it automates test cases in your Studio project and runs test sets.
-- 🏦 You start from a real design document for the **UiBank** demo app.
+- 🤖 **Autopilot** 在产品内部工作。在 **Studio** 中，它创建需求、测试用例和测试集；在 **Test Manager** 中，它评估需求、生成测试用例，并自主运行测试用例。
+- 💻 **Codex** 或 **Claude Code** 这样的**编码智能体**在你的终端里工作。借助 **`uip` CLI（命令行）**和 **UiPath skills（UiPath 技能）**，它能在你的 Studio 项目中实现测试用例的自动化，并运行测试集。
+- 🏦 你将从 **UiBank** 演示应用的一份真实设计文档开始。
 
-## 🗺️ The session
+## 🗺️ 课程安排 { #the-session }
 
-The session runs from 9:00 to 17:00, about 8 hours, with two breaks and lunch. After the two parts below, it ends with SAP Testing, Q&A, and feedback. Finish [Setup](setup.md) before it starts.
-
-<div class="grid cards" markdown>
-
--   :material-lightbulb-on-outline:{ .lg .middle } **1. Intro + Theoretical Aspects**
-
-    ---
-
-    Test Cloud, Test Manager, Autopilot for Testers, Autopilot for Developers, and coding agents: what each one does, and when to use which.
-
-    [:octicons-arrow-right-24: Agentic Testing & Coding Agents](what-is-a-coding-agent.md)
-
--   :material-hand-back-right-outline:{ .lg .middle } **2. Hands-on**
-
-    ---
-
-    Five parts, each in its own tab, from an empty project to an executed test set. The Agenda shows how the session runs, step by step.
-
-    [:octicons-arrow-right-24: Agenda](agenda.md)
-
-</div>
-
-### The hands-on parts
+课程从 9:00 持续到 17:00，约 8 小时，中间有两次休息和午餐。完成下面两个部分后，最后是 SAP 测试、问答和反馈环节。请在课程开始前完成[环境准备](setup.md)。
 
 <div class="grid cards" markdown>
 
--   :material-cog-outline:{ .lg .middle } **Testing Setup**
+-   :material-lightbulb-on-outline:{ .lg .middle } **1. 简介 + 理论知识**
 
     ---
 
-    The scenario, the design document, and the in-session setup: your Test Manager project, and a new test automation project in Studio connected to it.
+    Test Cloud、Test Manager、Autopilot for Testers、Autopilot for Developers 和编码智能体：它们各自做什么，以及什么时候该用哪一个。
 
-    [:octicons-arrow-right-24: Testing Setup](agentic-testing-hands-on.md)
+    [:octicons-arrow-right-24: 智能体测试与编码智能体](what-is-a-coding-agent.md)
 
--   :material-clipboard-text-outline:{ .lg .middle } **Requirements**
-
-    ---
-
-    Autopilot in Studio creates them from the design document, and Autopilot in Test Manager evaluates them.
-
-    [:octicons-arrow-right-24: Requirements](requirements.md)
-
--   :material-test-tube:{ .lg .middle } **Test Cases**
+-   :material-hand-back-right-outline:{ .lg .middle } **2. 动手实践**
 
     ---
 
-    Autopilot in Test Manager generates them. You automate the Login test case by hand, then Autopilot in Studio or a coding agent automates the next ones, and Autopilot runs one autonomously.
+    共五个部分，每部分各占一个标签页，从一个空项目一路做到执行完成的测试集。议程页面会一步步展示课程如何进行。
 
-    [:octicons-arrow-right-24: Test Cases](test-cases.md)
-
--   :material-play-circle-outline:{ .lg .middle } **Executions**
-
-    ---
-
-    Every run, manual, automated, or autonomous, with its results and screenshots.
-
-    [:octicons-arrow-right-24: Executions](executions.md)
-
--   :material-package-variant-closed:{ .lg .middle } **Test Sets**
-
-    ---
-
-    Autopilot groups your test cases, you run them, and you read the results.
-
-    [:octicons-arrow-right-24: Test Sets](test-sets.md)
-
--   :material-rocket-launch-outline:{ .lg .middle } **Before you start**
-
-    ---
-
-    The Setup page: the tools, the UiPath skills, your login, and your UiBank test user.
-
-    [:octicons-arrow-right-24: Setup](setup.md)
+    [:octicons-arrow-right-24: 议程](agenda.md)
 
 </div>
 
-Each part comes with the prompts you'll use.
+### 动手实践的各个部分 { #the-hands-on-parts }
 
-## 🔑 Key concepts
+<div class="grid cards" markdown>
+
+-   :material-cog-outline:{ .lg .middle } **测试准备**
+
+    ---
+
+    场景介绍、设计文档，以及课堂上的环境准备：你的 Test Manager 项目，以及在 Studio 中新建并与之关联的测试自动化项目。
+
+    [:octicons-arrow-right-24: 测试准备](agentic-testing-hands-on.md)
+
+-   :material-clipboard-text-outline:{ .lg .middle } **需求**
+
+    ---
+
+    Studio 中的 Autopilot 根据设计文档创建需求，Test Manager 中的 Autopilot 对其进行评估。
+
+    [:octicons-arrow-right-24: 需求](requirements.md)
+
+-   :material-test-tube:{ .lg .middle } **测试用例**
+
+    ---
+
+    由 Test Manager 中的 Autopilot 生成。你先手动完成 Login 测试用例的自动化，接下来的测试用例交给 Studio 中的 Autopilot 或编码智能体来自动化，最后由 Autopilot 自主运行其中一个。
+
+    [:octicons-arrow-right-24: 测试用例](test-cases.md)
+
+-   :material-play-circle-outline:{ .lg .middle } **执行**
+
+    ---
+
+    每一次运行——无论是手动、自动化还是自主执行——连同其结果和截图。
+
+    [:octicons-arrow-right-24: 执行](executions.md)
+
+-   :material-package-variant-closed:{ .lg .middle } **测试集**
+
+    ---
+
+    Autopilot 将你的测试用例分组，你来运行它们并解读结果。
+
+    [:octicons-arrow-right-24: 测试集](test-sets.md)
+
+-   :material-rocket-launch-outline:{ .lg .middle } **开始之前**
+
+    ---
+
+    环境准备页面：所需工具、UiPath skills、登录方式，以及你的 UiBank 测试用户。
+
+    [:octicons-arrow-right-24: 环境准备](setup.md)
+
+</div>
+
+每个部分都附有你要用到的提示词。
+
+## 🔑 核心概念 { #key-concepts }
 
 <div class="feature-grid" markdown>
 
 <div class="feature" markdown>
 <span class="f-icon">💻</span>
-<span class="f-title" markdown="span">Coding agent</span>
+<span class="f-title" markdown="span">编码智能体</span>
 
-An AI assistant (e.g., Claude Code) that builds and runs UiPath components from your instructions, using the `uip` CLI and UiPath skills.
+一种 AI 助手（例如 Claude Code），能根据你的指令，使用 `uip` CLI 和 UiPath skills 构建并运行 UiPath 组件。
 
 </div>
 
@@ -114,7 +114,7 @@ An AI assistant (e.g., Claude Code) that builds and runs UiPath components from 
 <span class="f-icon">⌨️</span>
 <span class="f-title" markdown="span">`uip` CLI</span>
 
-The command-line interface coding agents use to talk to the UiPath platform, including Test Manager (`uip tm`) and Studio projects (`uip rpa`).
+编码智能体与 UiPath 平台通信所用的命令行界面，涵盖 Test Manager（`uip tm`）和 Studio 项目（`uip rpa`）。
 
 </div>
 
@@ -122,7 +122,7 @@ The command-line interface coding agents use to talk to the UiPath platform, inc
 <span class="f-icon">🧩</span>
 <span class="f-title" markdown="span">UiPath skills</span>
 
-Curated instruction packs that teach a coding agent how to work with UiPath correctly. This workshop uses `uipath-test`, `uipath-rpa`, and `uipath-platform`.
+精心整理的指令包，教会编码智能体如何正确地使用 UiPath。本工作坊使用 `uipath-test`、`uipath-rpa` 和 `uipath-platform`。
 
 </div>
 
@@ -130,7 +130,7 @@ Curated instruction packs that teach a coding agent how to work with UiPath corr
 <span class="f-icon">📋</span>
 <span class="f-title" markdown="span">Test Manager</span>
 
-The Test Cloud hub for requirements, test cases, test sets, executions, and results.
+Test Cloud 的中枢，集中管理需求、测试用例、测试集、执行和结果。
 
 </div>
 
@@ -138,7 +138,7 @@ The Test Cloud hub for requirements, test cases, test sets, executions, and resu
 <span class="f-icon">🤖</span>
 <span class="f-title" markdown="span">Autopilot for Testers</span>
 
-UiPath's built-in testing agents in Studio and Test Manager. They generate and evaluate requirements, generate test cases and test sets, run test cases autonomously, and explain test results.
+UiPath 内置于 Studio 和 Test Manager 中的测试智能体。它们能生成并评估需求、生成测试用例和测试集、自主运行测试用例，并解释测试结果。
 
 </div>
 
@@ -146,7 +146,7 @@ UiPath's built-in testing agents in Studio and Test Manager. They generate and e
 <span class="f-icon">🪄</span>
 <span class="f-title" markdown="span">Autopilot for Developers</span>
 
-Autopilot in Studio for building and fixing automations: it generates and fixes expressions from the workflow's context.
+Studio 中用于构建和修复自动化的 Autopilot：它会根据工作流的上下文生成并修复表达式。
 
 </div>
 

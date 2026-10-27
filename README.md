@@ -1,16 +1,12 @@
-# UiPath Agentic Testing with Coding Agents — Site
+# UiPath 智能体测试与编码智能体 — 站点
 
-Hands-on course teaching clients & partners UiPath Agentic Testing with coding agents
-(Claude Code) and the `uip` CLI: plan a test case in Test Manager, automate it in
-Studio, execute it, and report on it. The scenario is the UiBank test case design
-document E2E UiBank Online Banking, which becomes eight requirements and eight independent test cases.
+> 本仓库（AgenticTestingWorkshop_SC）是 [AgenticTestingWorkshop](https://github.com/madapopescu24/AgenticTestingWorkshop)（英文原版）的简体中文版，发布后的站点地址为 https://vincentzhenguipath.github.io/AgenticTestingWorkshop_SC/。
 
-Built on the same MkDocs framework as the
-[Agentic Practice Workshop](https://github.com/uipath-practice/AgenticPracticeCourse),
-with three additions: a private knowledge base, a configurable training environment,
-and a CLI/KB-driven lesson-generation path alongside the screenshot path.
+这是一门面向客户和合作伙伴的动手实践课程，讲授如何借助编码智能体（Claude Code）和 `uip` CLI（命令行）进行 UiPath 智能体测试（Agentic Testing）：在 Test Manager 中规划测试用例，在 Studio 中实现自动化，执行测试并生成报告。课程场景基于 UiBank 测试用例设计文档 E2E UiBank Online Banking，它会转化为八个需求和八个相互独立的测试用例。
 
-## How it works
+本站基于与 [Agentic Practice Workshop](https://github.com/uipath-practice/AgenticPracticeCourse) 相同的 MkDocs 框架构建，并新增了三项内容：一个私有知识库、一个可配置的培训环境，以及在截图路径之外的一条由 CLI/知识库驱动的课程生成路径。
+
+## 工作原理
 
 ```
 ../knowledge-base/  (private SSOT, NOT in this repo)
@@ -18,197 +14,129 @@ and a CLI/KB-driven lesson-generation path alongside the screenshot path.
 docs/*.md  →  MkDocs builds HTML  →  GitHub Actions  →  gh-pages  →  GitHub Pages
 ```
 
-| Path | Purpose |
+| 路径 | 用途 |
 |------|---------|
-| `docs/` | Published page content — one `.md` per page |
-| `mkdocs.yml` | Site config + **published** nav |
-| `mkdocs.local.yml` | Local-only nav incl. work-in-progress (gitignored) |
-| `main.py` | Environment variables (staging vs prod) for the training callout |
-| `Master/` | Authoring rules & templates (copied from base framework) |
-| `.claude/commands/` | Authoring slash commands (copied from base framework) |
-| `hooks/`, `scripts/` | Two-column hook; screenshot metadata pipeline (copied) |
-| `.github/workflows/deploy.yml` | Auto-deploy to GitHub Pages on push to `main` |
+| `docs/` | 发布的页面内容 — 每个页面一个 `.md` |
+| `mkdocs.yml` | 站点配置 + **已发布**的导航 |
+| `mkdocs.local.yml` | 仅限本地的导航，包含进行中的内容（已加入 gitignore） |
+| `main.py` | 用于培训提示框的环境变量（staging 与 prod） |
+| `Master/` | 编写规则与模板（复制自基础框架） |
+| `.claude/commands/` | 编写用的斜杠命令（复制自基础框架） |
+| `hooks/`, `scripts/` | 双栏钩子；截图元数据流水线（复制而来） |
+| `.github/workflows/deploy.yml` | 推送到 `main` 时自动部署到 GitHub Pages |
 
-The knowledge base is intentionally kept **outside this public repo** (`../knowledge-base/`)
-so internal material is never published.
+知识库被有意放在**这个公开仓库之外**（`../knowledge-base/`），以确保内部资料永远不会被发布。
 
-## First-time setup
+## 首次设置
 
 ```bash
-# 1. Pull the reusable framework files from the base repo
+# 1. 从基础仓库拉取可复用的框架文件
 ./bootstrap-framework.sh
 
-# 2. Install dependencies
+# 2. 安装依赖
 pip install -r requirements.txt
 
-# 3. Preview locally (authoring environment + WIP nav)
+# 3. 本地预览（编写环境 + 进行中的导航）
 COURSE_ENV=staging mkdocs serve -f mkdocs.local.yml
-# open http://127.0.0.1:8000
+# 打开 http://127.0.0.1:8000
 
-# 4. Release-equivalent build check (CI deploys the staging profile)
+# 4. 与正式发布等效的构建检查（CI 部署 staging 配置）
 COURSE_ENV=staging mkdocs build
 ```
 
-## Publishing to GitHub
+## 发布到 GitHub
 
-This repo is scaffolded locally. To create the remote and deploy:
+本仓库是在本地搭建的。要创建远程仓库并部署：
 
 ```bash
 cd AgenticTestingWorkshop
 git init && git add . && git commit -m "Initial scaffold"
 gh repo create madapopescu24/AgenticTestingWorkshop --public --source=. --push
-# then enable GitHub Pages on the gh-pages branch (created by the deploy workflow)
+# 然后在 gh-pages 分支上启用 GitHub Pages（该分支由部署工作流创建）
 ```
 
-## Trainer Notes (Internal)
+## 讲师备注（内部）
 
-This section is for trainers/facilitators only. It stays in this README rather
-than `docs/` because GitHub Pages has no way to restrict access by email —
-anything admin-only needs to live in the repo itself, not on the public site.
-Do not move this content into `docs/` or reference it from
-`mkdocs.yml`/`mkdocs.local.yml`.
+本节仅供讲师/引导者使用。它保留在这个 README 中而不是 `docs/` 里，因为 GitHub Pages 无法按邮箱限制访问——任何仅限管理员的内容都必须放在仓库本身，而不是公开站点上。请勿将本节内容移入 `docs/`，也不要在 `mkdocs.yml`/`mkdocs.local.yml` 中引用它。
 
-### Environment & Tenant Setup
+### 环境与租户设置
 
-The site's `main.py` defines a `COURSE_ENV` switch with two profiles (`staging`
-and `prod`) driving the `{{ training_url }}`, `{{ training_org }}`,
-`{{ training_tenant }}`, and `{{ training_folder }}` macros used throughout the
-lessons. **The workshop runs on staging**: the newest Autopilot for Testers and
-Autopilot for Developers features it showcases are only available there. CI
-deploys with `COURSE_ENV=staging`, and that is also the default.
+站点的 `main.py` 定义了一个 `COURSE_ENV` 开关，包含两个配置（`staging` 和 `prod`），用于驱动课程中随处使用的 `{{ training_url }}`、`{{ training_org }}`、`{{ training_tenant }}` 和 `{{ training_folder }}` 宏。**工作坊在 staging 上运行**：它所展示的 Autopilot for Testers 和 Autopilot for Developers 最新功能只在那里可用。CI 使用 `COURSE_ENV=staging` 部署，这也是默认值。
 
-| Profile | Organization | URL | Tenant | Used for |
+| 配置 | 组织 | URL | 租户 | 用途 |
 |---|---|---|---|---|
-| `staging` | `partnersuccess` | https://staging.uipath.com/partnersuccess | `MadalinaTest` | **The participant environment.** Studio, the `uip` CLI, Test Manager, and Orchestrator all point here. |
-| `prod` | `tpenlabs` | https://cloud.uipath.com/tpenlabs | `AgenticTesting` | Not used in the session. Kept for when the Autopilot features reach Automation Cloud. |
+| `staging` | `partnersuccess` | https://staging.uipath.com/partnersuccess | `MadalinaTest` | **学员环境。** Studio、`uip` CLI、Test Manager 和 Orchestrator 都指向这里。 |
+| `prod` | `tpenlabs` | https://cloud.uipath.com/tpenlabs | `AgenticTesting` | 课程中不使用。留待 Autopilot 功能上线 Automation Cloud 时使用。 |
 
-Confirmed: `partnersuccess` / `MadalinaTest` on staging has Test Manager, Autopilot
-for Testers, and Autopilot for Developers enabled. To run the session on another
-tenant, change `training_tenant` (and, if needed, `training_org`) for the `staging`
-profile in `main.py`.
+已确认：staging 上的 `partnersuccess` / `MadalinaTest` 已启用 Test Manager、Autopilot for Testers 和 Autopilot for Developers。如需在其他租户上开展课程，请修改 `main.py` 中 `staging` 配置的 `training_tenant`（必要时还有 `training_org`）。
 
-All exercises operate inside a single shared Orchestrator folder on staging.
-Test Manager for the tenant is at
-`https://staging.uipath.com/partnersuccess/MadalinaTest/testmanager_`.
+所有练习都在 staging 上的同一个共享 Orchestrator 文件夹中进行。该租户的 Test Manager 地址为
+`https://staging.uipath.com/partnersuccess/MadalinaTest/testmanager_`。
 
-- **Folder name:** `AgenticTesting` (the `training_folder` macro in `main.py`). It's
-  the default Orchestrator folder of every participant's Test Manager project, and
-  holds the test packages and the credential assets.
-- **Folder key:** _TODO — create or confirm the `AgenticTesting` folder on staging
-  and record its key here._
+- **文件夹名称：** `AgenticTesting`（即 `main.py` 中的 `training_folder` 宏）。它是每位学员 Test Manager 项目的默认 Orchestrator 文件夹，存放测试包和凭据资产。
+- **文件夹密钥：** _TODO — 在 staging 上创建或确认 `AgenticTesting` 文件夹，并在此记录其密钥。_
 
-Every deployable artifact (test package, credential asset, Test Manager project) is
-named with a `{YourName}` prefix (e.g. `{YourName}UiBankTests`) so
-participants sharing the same tenant/folder don't collide with each other's
-packages, processes, or Orchestrator entities.
+每个可部署的产物（测试包、凭据资产、Test Manager 项目）都以 `{YourName}` 为前缀命名（例如 `{YourName}UiBankTests`），这样共享同一租户/文件夹的学员就不会与彼此的包、流程或 Orchestrator 实体发生冲突。
 
-### Inviting Participants
+### 邀请学员
 
-Before a cohort starts, invite each participant to the staging org
-(`partnersuccess` on `staging.uipath.com`) so they can log in with their own email:
+每期课程开始前，邀请每位学员加入 staging 组织（`staging.uipath.com` 上的 `partnersuccess`），以便他们用自己的邮箱登录：
 
-1. In the staging org, go to the **Admin** tab.
-2. Go to **Accounts and Local Groups**.
-3. Invite each participant using their email address.
-4. Make sure each invited participant is added to the **CodingAgentsGroup**
-   local group (create it on staging if it doesn't exist) — this is what grants
-   them access to the `MadalinaTest` tenant, Test Manager, and the `AgenticTesting`
-   folder.
+1. 在 staging 组织中，进入 **Admin**（管理）选项卡。
+2. 进入 **Accounts and Local Groups**（账户和本地组）。
+3. 使用每位学员的邮箱地址邀请他们。
+4. 确保每位受邀学员都被加入 **CodingAgentsGroup** 本地组（如果 staging 上没有，就创建一个）——正是这个组授予他们对 `MadalinaTest` 租户、Test Manager 和 `AgenticTesting` 文件夹的访问权限。
 
-### Before Each Training
+### 每次培训前
 
-The agentic testing session (about 8 hours) only works if the platform
-prerequisites are ready before it starts:
+智能体测试课程（约 8 小时）只有在开始前平台前提条件全部就绪时才能顺利进行：
 
-- [ ] Build and publish the fallback test package `DemoUiBankTests` in the
-      **AgenticTesting** folder. Its test entry points `T0_LoginAndInitialAccountState`
-      to `T7_LogoutAndEvidenceCollection` automate the eight test cases, one each,
-      and pass in any order. Anyone whose own automations from Test Cases
-      aren't ready links this one to their test cases in Test Sets.
-- [ ] Create a credential asset for the demo package's UiBank user in the folder,
-      and do one full dry run: link `DemoUiBankTests` to a Test Manager test case,
-      run its test set as automated, and check the screenshots arrive.
-- [ ] Make sure **unattended robots** that can run Chrome browser automation are
-      available to the **AgenticTesting** folder — automated test sets AND every
-      participant's **Run Autonomously** execution run there. Serverless (the
-      "Default Serverless" template has no runtime slots) and participants'
-      personal-workspace robots don't pick these jobs up: they stay Pending with
-      no error. Stop and re-run any job that went Pending before a robot was
-      available. Plan enough capacity for the whole group to run their
-      autonomous executions and test sets in the same 10 minutes. This is the most
-      likely bottleneck in Test Sets.
-- [ ] Confirm **Autopilot** is enabled on the staging tenant for everyone in the
-      group: the Autopilot panel in Studio (the hands-on part starts with it
-      generating the requirements, and uses it again to create test sets), **Generate Test Case with
-      Autopilot** in Test Explorer, the Evaluation Agent, Test Case Generation,
-      Prompt Library, **Run Autonomously**, and Generate Insights in Test Manager,
-      and Fix / generate in Studio's Expression Editor. Do one dry run of the
-      requirements prompt and check it produces eight requirements named
-      after the steps. Run one test case autonomously end to end, and check
-      the live stream and the per-step screenshots work for participants.
-- [ ] Confirm the **CodingAgentsGroup** can create Test Manager projects (the
-      hands-on Setup creates one per participant), create credential assets, and upload packages
-      in the folder.
-- [ ] Check participants can sign Studio in to `staging.uipath.com`. Studio signed
-      in to Automation Cloud is the most likely Setup failure.
-- [ ] The design document is published on the site as
-      `docs/resources.assets/E2E UiBank Online Banking.docx` (download buttons on
-      the hands-on page and Resources). It's a cleaned copy: leftover images from
-      another project, author metadata, and a real username/email were removed.
-      If you update the original, clean it the same way before replacing it.
-- [ ] Send the [Setup](docs/setup.md) page at least two days ahead, including
-      the UiBank registration and the credential asset. Setup is not part of the
-      8 hours. Ask Mac users to pair with a Windows user from the Login test case on.
+- [ ] 在 **AgenticTesting** 文件夹中构建并发布备用测试包 `DemoUiBankTests`。它的测试入口点 `T0_LoginAndInitialAccountState` 到 `T7_LogoutAndEvidenceCollection` 分别自动化了八个测试用例，每个对应一个，并且以任意顺序都能通过。在测试用例环节中自己的自动化没做好的学员，可以在测试集环节把它关联到自己的测试用例上。
+- [ ] 在该文件夹中为演示包的 UiBank 用户创建凭据资产，并完整演练一遍：把 `DemoUiBankTests` 关联到某个 Test Manager 测试用例，以自动化方式运行它的测试集，并检查截图是否到位。
+- [ ] 确保 **AgenticTesting** 文件夹中有可用的、能运行 Chrome 浏览器自动化的**无人值守机器人**——自动化测试集以及每位学员的 **Run Autonomously**（自主运行）执行都在那里运行。Serverless（"Default Serverless" 模板没有运行时槽位）和学员个人工作区的机器人都不会接手这些作业：它们会一直停留在 Pending，且不报错。在机器人可用之前就进入 Pending 的作业，要停止后重新运行。请规划足够的容量，让整个小组能在同一个 10 分钟内运行各自的自主执行和测试集。这是测试集环节最可能出现的瓶颈。
+- [ ] 确认 staging 租户已为小组中的每个人启用 **Autopilot**：Studio 中的 Autopilot 面板（动手实践部分一开始就用它生成需求，之后又用它创建测试集）、Test Explorer 中的 **Generate Test Case with Autopilot**（使用 Autopilot 生成测试用例）、Test Manager 中的 Evaluation Agent、Test Case Generation、Prompt Library、**Run Autonomously** 和 Generate Insights，以及 Studio 表达式编辑器中的 Fix / generate。演练一次需求提示词，检查它是否生成了以步骤命名的八个需求。端到端地自主运行一个测试用例，并检查实时画面和逐步截图对学员是否正常。
+- [ ] 确认 **CodingAgentsGroup** 可以创建 Test Manager 项目（动手实践的环境准备环节会为每位学员创建一个）、创建凭据资产，并在该文件夹中上传包。
+- [ ] 检查学员能否让 Studio 登录到 `staging.uipath.com`。Studio 登录到了 Automation Cloud，是环境准备环节最常见的失败原因。
+- [ ] 设计文档以 `docs/resources.assets/E2E UiBank Online Banking.docx` 的形式发布在站点上（动手实践页面和资源页面上有下载按钮）。这是一份清理过的副本：已删除来自其他项目的残留图片、作者元数据，以及一个真实的用户名/邮箱。如果你更新了原始文档，替换前请用同样的方式清理。
+- [ ] 至少提前两天发送[环境准备](docs/setup.md)页面，包括 UiBank 注册和凭据资产。环境准备不计入 8 小时。请 Mac 用户从 Login 测试用例开始与一位 Windows 用户结对。
 
-### TODO — fill in before the next cohort
+### TODO — 下一期课程前补充
 
-- [ ] Is there a reset/cleanup step needed between cohorts (Test Manager projects,
-      packages, credential assets, executions left from the previous run)? Document
-      the steps or the script here.
-- [ ] UiBank data can be reset at any time. Do participants need to re-register
-      before each cohort?
-- [ ] Who to contact if a participant needs their credentials/tenant access
-      re-issued mid-workshop?
+- [ ] 两期课程之间是否需要重置/清理步骤（上一期遗留的 Test Manager 项目、包、凭据资产、执行）？请在此记录步骤或脚本。
+- [ ] UiBank 的数据随时可能被重置。学员是否需要在每期课程前重新注册？
+- [ ] 如果学员在工作坊中途需要重新发放凭据/租户访问权限，应该联系谁？
 
-### Timing & Agenda
+### 时间与议程
 
-The session runs for **about 8 hours** (9:00 to 17:00), with a 15-minute break after
-Requirements, a 45-minute lunch (12:30) in the middle of Test Cases,
-and a 10-minute break before Executions. It ends with SAP Testing, Q&A, and feedback.
-The timings are approximate: adapt them during the workshop, including the breaks.
-There is no homework. The
-participant-facing schedule is on the Agenda page; the trainer view:
+课程持续**约 8 小时**（9:00–17:00），需求环节之后有 15 分钟休息，测试用例环节中间有 45 分钟午餐（12:30），执行环节之前有 10 分钟休息。最后是 SAP 测试、问答和反馈。时间安排是大致的：工作坊期间可以灵活调整，休息时间也一样。没有课后作业。面向学员的日程在议程页面上；以下是讲师视角：
 
-| Time | Agenda item | Trainer focus |
+| 时间 | 议程项 | 讲师重点 |
 |---|---|---|
-| 0:00–0:30 | Welcome | Introductions and the plan for the day |
-| 0:30–1:45 | 1. Intro + Theoretical Aspects | Present *Agentic Testing & Coding Agents*: Test Cloud, Autopilot for Testers, Autopilot for Developers, coding agents; when to use which. Check Studio is signed in to staging for everyone. |
-| 1:45–2:00 | Setup | Everyone creates a Test Manager project (name `{YourName}_UIB_Test`, prefix `UIB`) and sets its default folder, then the Studio test automation project, then connects them; check the Autopilot panel opens for everyone before moving on |
-| 2:00–2:15 | Autopilot in Studio creates requirements | Demo the prompt on screen first; check everyone gets eight requirements named after the steps |
-| 2:15–2:25 | Discuss the requirements | Traceability, testability, gaps; did Autopilot invent rules? |
-| 2:25–2:45 | Evaluate, improve, re-evaluate | Demo the Evaluation Agent on one requirement before people try |
-| 2:45–3:00 | Break | |
-| 3:00–3:30 | Autopilot in Test Manager creates test cases | Login requirement; show the Prompt Library |
-| 3:30–4:15 | Lunch | Help stragglers who are still creating test cases |
-| 4:15–4:45 | Implement the Login test case manually | Walk Given / When / Then; make sure targets go into the Object Repository |
-| 4:45–5:15 | Autopilot in Studio / Codex generates a test case | Split the room between Autopilot and coding agent; compare results at the end |
-| 5:15–5:30 | Run Autonomously | Everyone runs a negative login test case autonomously; point out the live stream and the per-step screenshots |
-| 5:30–6:05 | Implement a few more test cases | Point people at the *Given* column: transfer and lookup set up their own data |
-| 6:05–6:15 | Break | |
-| 6:15–6:25 | Executions tab | Everyone explores their own executions: the autonomous run, its test case log, and the screenshots |
-| 6:25–6:35 | Test Sets | Everyone publishes the testing project to the Orchestrator Tenant Process Feed first; then Autopilot creates smoke + regression sets; run; watch robot capacity; Generate Insights |
-| 6:35–6:45 | Next Steps | *What you built*, *Gotchas* |
-| 6:45–7:45 | SAP Testing | |
-| 7:45–7:55 | Q&A | |
-| 7:55–8:00 | Feedback | |
+| 0:00–0:30 | 欢迎 | 自我介绍和当天的计划 |
+| 0:30–1:45 | 1. 介绍 + 理论部分 | 讲解*智能体测试与编码智能体*：Test Cloud、Autopilot for Testers、Autopilot for Developers、编码智能体；各自适用的场景。检查每个人的 Studio 都已登录到 staging。 |
+| 1:45–2:00 | 环境准备 | 每个人创建一个 Test Manager 项目（名称 `{YourName}_UIB_Test`，前缀 `UIB`）并设置其默认文件夹，然后创建 Studio 测试自动化项目，再将两者连接；继续之前检查每个人都能打开 Autopilot 面板 |
+| 2:00–2:15 | Studio 中的 Autopilot 创建需求 | 先在屏幕上演示提示词；检查每个人都得到以步骤命名的八个需求 |
+| 2:15–2:25 | 讨论需求 | 可追溯性、可测试性、遗漏之处；Autopilot 有没有凭空编造规则？ |
+| 2:25–2:45 | 评估、改进、再评估 | 在大家动手之前，先用一个需求演示 Evaluation Agent |
+| 2:45–3:00 | 休息 | |
+| 3:00–3:30 | Test Manager 中的 Autopilot 创建测试用例 | Login 需求；展示 Prompt Library |
+| 3:30–4:15 | 午餐 | 帮助还在创建测试用例的落后学员 |
+| 4:15–4:45 | 手动实现 Login 测试用例 | 讲解 Given / When / Then；确保目标元素都放进对象存储库 |
+| 4:45–5:15 | Studio 中的 Autopilot / Codex 生成测试用例 | 把学员分成 Autopilot 组和编码智能体组；最后对比结果 |
+| 5:15–5:30 | 自主运行 | 每个人自主运行一个登录反向测试用例；指出实时画面和逐步截图 |
+| 5:30–6:05 | 再实现几个测试用例 | 引导大家关注 *Given* 列：转账和查询会自行准备数据 |
+| 6:05–6:15 | 休息 | |
+| 6:15–6:25 | 执行选项卡 | 每个人探索自己的执行：自主运行、其测试用例日志以及截图 |
+| 6:25–6:35 | 测试集 | 每个人先把测试项目发布到 Orchestrator Tenant Process Feed；然后由 Autopilot 创建冒烟 + 回归测试集；运行；留意机器人容量；Generate Insights |
+| 6:35–6:45 | 后续步骤 | *你构建了什么*、*常见问题* |
+| 6:45–7:45 | SAP 测试 | |
+| 7:45–7:55 | 问答 | |
+| 7:55–8:00 | 反馈 | |
 
-The previous recruitment pipeline session (Coded Agent → RPA → Maestro Flow) is
-archived locally under `Archive/recruitment-pipeline/`.
+之前的招聘流水线课程（Coded Agent → RPA → Maestro Flow）已在本地归档到 `Archive/recruitment-pipeline/` 下。
 
-**Time-keeping rule:** when a step's time box ends, move on with what you have.
-Anyone behind links `DemoUiBankTests` in Test Sets and still runs a test set and reads
-its executions.
+**控时规则：** 某个步骤的时间一到，就带着已有的成果继续往下走。进度落后的学员在测试集环节关联 `DemoUiBankTests`，照样可以运行测试集并查看其执行。
 
-### Answer Keys / Expected Outputs
+### 参考答案 / 预期输出
 
-_Not yet documented — add reference solutions / expected results here._
+_尚未记录 — 请在此添加参考解答 / 预期结果。_

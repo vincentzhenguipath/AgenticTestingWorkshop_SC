@@ -1,14 +1,14 @@
-Intro + theoretical aspects
+简介 + 理论知识
 {: .eyebrow }
 
-# 🤝 Agentic Testing & Coding Agents
-Learn what testing with UiPath Test Cloud looks like, what Agentic Testing adds, how coding agents work, and where the two meet in your test lifecycle.
+# 🤝 智能体测试与编码智能体 { #agentic-testing-coding-agents }
+了解用 UiPath Test Cloud 做测试是什么样子，智能体测试（Agentic Testing）又带来了什么，编码智能体如何工作，以及两者在你的测试生命周期中如何交汇。
 
-## 🧪 Testing and UiPath Test Cloud
+## 🧪 测试与 UiPath Test Cloud { #testing-and-uipath-test-cloud }
 
-### 🔬 Testing in a nutshell
+### 🔬 测试速览 { #testing-in-a-nutshell }
 
-Testing is an investigation that gives stakeholders information about the quality of the product under test. It happens at four levels:
+测试是一种调查活动，目的是向相关方提供被测产品的质量信息。测试分为四个层级：
 
 <div class="circles" markdown>
 
@@ -16,9 +16,9 @@ Testing is an investigation that gives stakeholders information about the qualit
 <span class="num">1</span>
 <div class="ci-body" markdown>
 
-**Unit**
+**单元测试**
 
-Individual units of the system, to confirm each one's code behaves as expected. Created and run by developers.
+针对系统中的单个单元，确认每个单元的代码都按预期运行。由开发人员编写并执行。
 
 </div>
 </div>
@@ -27,9 +27,9 @@ Individual units of the system, to confirm each one's code behaves as expected. 
 <span class="num">2</span>
 <div class="ci-body" markdown>
 
-**Integration**
+**集成测试**
 
-Units combined and tested as a group, to find faults in how they interact
+把多个单元组合起来作为一个整体测试，找出它们交互时的问题
 
 </div>
 </div>
@@ -38,9 +38,9 @@ Units combined and tested as a group, to find faults in how they interact
 <span class="num">3</span>
 <div class="ci-body" markdown>
 
-**System / End-to-End**
+**系统测试 / 端到端测试**
 
-The complete, integrated system, against its end-to-end specification
+针对完整集成后的系统，按照端到端规格进行验证
 
 </div>
 </div>
@@ -49,23 +49,23 @@ The complete, integrated system, against its end-to-end specification
 <span class="num">4</span>
 <div class="ci-body" markdown>
 
-**Acceptance**
+**验收测试**
 
-The system against the business requirements, to judge whether it's ready for delivery
-
-</div>
-</div>
+对照业务需求检验系统，判断它是否可以交付
 
 </div>
+</div>
 
-UiPath Test Cloud brings the most value in the middle: **integration** and **end-to-end** testing, which is exactly what the UiBank test cases in this session are. Two more ideas you'll use all day:
+</div>
 
-- **Black-box testing.** Application testing checks that the software meets its requirements from the outside, through inputs and expected outputs, without access to its code. That's how every UiBank test works.
-- **Test early.** A defect found while testing costs far less than a hot-fix after it reaches production. Automation doesn't replace people: it takes the repetitive checks, so testers can focus on exploratory and usability testing.
+UiPath Test Cloud 最能发挥价值的是中间这两层：**集成测试**和**端到端测试**，而本次课程中的 UiBank 测试用例正是这一类。另外还有两个概念，你今天会反复用到：
 
-### ☁️ What UiPath Test Cloud is
+- **黑盒测试。** 应用测试从外部检查软件是否满足需求，只看输入和预期输出，不接触代码。每个 UiBank 测试都是这样进行的。
+- **尽早测试。** 在测试阶段发现缺陷，成本远低于上线后再紧急修复。自动化并不会取代人：它接手那些重复性的检查，让测试人员可以专注于探索性测试和可用性测试。
 
-**UiPath Test Cloud** is UiPath's offering for application testers: a dedicated interface of Automation Cloud, focused on application testing, and available in the cloud and on-premises.
+### ☁️ UiPath Test Cloud 是什么 { #what-uipath-test-cloud-is }
+
+**UiPath Test Cloud** 是 UiPath 面向应用测试人员的产品：它是 Automation Cloud 中专注于应用测试的专属界面，支持云端和本地部署。
 
 <div class="feature-grid" markdown>
 
@@ -73,7 +73,7 @@ UiPath Test Cloud brings the most value in the middle: **integration** and **end
 <span class="f-icon">📋</span>
 <span class="f-title" markdown="span">Test Manager</span>
 
-Plan, run, manage, and analyze testing: requirements, test cases, test sets, executions, results
+规划、执行、管理和分析测试：需求、测试用例、测试集、执行、结果
 
 </div>
 
@@ -81,7 +81,7 @@ Plan, run, manage, and analyze testing: requirements, test cases, test sets, exe
 <span class="f-icon">🛠️</span>
 <span class="f-title" markdown="span">Studio</span>
 
-Build automated test cases with a visual designer, or as code
+用可视化设计器或代码构建自动化测试用例
 
 </div>
 
@@ -89,7 +89,7 @@ Build automated test cases with a visual designer, or as code
 <span class="f-icon">⚙️</span>
 <span class="f-title" markdown="span">Orchestrator</span>
 
-Execute and manage test automation at scale, on robots
+在机器人上大规模执行和管理测试自动化
 
 </div>
 
@@ -97,7 +97,7 @@ Execute and manage test automation at scale, on robots
 <span class="f-icon">✨</span>
 <span class="f-title" markdown="span">Agentic Testing</span>
 
-AI agents that speed up test design and execution: Autopilot for Testers, and agents you build yourself
+加速测试设计与执行的 AI 智能体：Autopilot for Testers，以及你自己构建的智能体
 
 </div>
 
@@ -105,83 +105,83 @@ AI agents that speed up test design and execution: Autopilot for Testers, and ag
 <span class="f-icon">🧩</span>
 <span class="f-title" markdown="span">Agent Builder</span>
 
-Build those custom agents. Included with the App Tester license
+用来构建这些自定义智能体。包含在 App Tester 许可证中
 
 </div>
 
 </div>
 
-### 🧱 The building blocks in Test Manager
+### 🧱 Test Manager 中的基本构件 { #the-building-blocks-in-test-manager }
 
 <div class="feature-grid" markdown>
 
 <div class="feature" markdown>
 <span class="f-icon">📁</span>
-<span class="f-title" markdown="span">Project</span>
+<span class="f-title" markdown="span">项目</span>
 
-The container for everything below
+下面所有对象的容器
 
-💡 Every object key starts with the project's **prefix**, for example `UIB:1`. Its **default folder** in Orchestrator is where automated and autonomous runs happen.
+💡 每个对象的键都以项目的**前缀**开头，例如 `UIB:1`。项目在 Orchestrator 中的**默认文件夹**就是自动化执行和自主执行运行的地方。
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">📋</span>
-<span class="f-title" markdown="span">Requirement</span>
+<span class="f-title" markdown="span">需求</span>
 
-What the application must do, and its acceptance criteria
+应用必须做什么，以及对应的验收标准
 
-💡 Requirements can also come from **Jira**, **ServiceNow**, or **Redmine**
+💡 需求也可以来自 **Jira**、**ServiceNow** 或 **Redmine**
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🧪</span>
-<span class="f-title" markdown="span">Test case</span>
+<span class="f-title" markdown="span">测试用例</span>
 
-A scenario with manual steps, linked to the requirement it covers
+包含手动步骤的场景，关联到它所覆盖的需求
 
-💡 It can be linked to an automation in Studio, or run autonomously by Autopilot
+💡 它可以关联到 Studio 中的自动化，也可以由 Autopilot 自主执行
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">📦</span>
-<span class="f-title" markdown="span">Test set</span>
+<span class="f-title" markdown="span">测试集</span>
 
-The test cases you execute together
+一起执行的一组测试用例
 
-💡 Test cases are assigned **statically** (picked by hand) or **dynamically** (by label). You can enforce an order only for statically assigned ones.
+💡 测试用例可以**静态**分配（手动挑选）或**动态**分配（按标签）。只有静态分配的测试用例才能强制指定执行顺序。
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">▶️</span>
-<span class="f-title" markdown="span">Execution</span>
+<span class="f-title" markdown="span">执行</span>
 
-One run of a test case or test set
+测试用例或测试集的一次运行
 
-💡 **Manual**, **Automated**, **Autonomous**, or **Pending**, each with a log, a result, and evidence per test case. See [Executions](executions.md).
-
-</div>
+💡 分为**手动**、**自动化**、**自主**或**待执行（Pending）**，每个测试用例都有各自的日志、结果和证据。详见[执行](executions.md)。
 
 </div>
 
-The links between them are what Test Manager calls **traceability**: from a requirement you can see which test cases cover it and how they did in their latest run.
+</div>
 
-### 🛠️ Test automation projects in Studio
+它们之间的关联就是 Test Manager 所说的**可追溯性**：从一条需求出发，你可以看到哪些测试用例覆盖了它，以及这些测试用例在最近一次运行中的表现。
 
-A **test automation project** is the Studio project type for application testing. Only users with the **App Tester Developer** license create and publish them.
+### 🛠️ Studio 中的测试自动化项目 { #test-automation-projects-in-studio }
 
-- **Test cases and data-driven test cases.** A project holds many test cases. A data-driven test case runs once per row of test data.
-- **Given / When / Then.** Every test case has three parts: set up, act, and verify. Verifications go in **Then**.
-- **Testing activities included.** **Verify Expression**, **Verify Expression With Operator**, and **Verify Control Attribute** check the expected results, and can attach a screenshot to each result.
-- **Object Repository.** UI targets captured from the application, shared by every test case in the project.
-- **Test Explorer.** Runs and debugs test cases while you build. Its results last only for your Studio session.
-- **VB or C#.** Both expression languages are supported, and test cases can also be written as code.
-- **Publishing.** Publishing the project to the **Orchestrator Tenant Process Feed** creates the matching process in Orchestrator. Test Manager runs the latest published version.
+**测试自动化项目**是 Studio 中专门用于应用测试的项目类型。只有拥有 **App Tester Developer** 许可证的用户才能创建和发布这类项目。
 
-### 🎫 Licenses
+- **测试用例与数据驱动测试用例。** 一个项目可以包含多个测试用例。数据驱动测试用例会针对测试数据的每一行各运行一次。
+- **Given / When / Then。** 每个测试用例都由三部分组成：准备、操作、验证。验证放在 **Then** 中。
+- **内置测试活动。** **Verify Expression**（验证表达式）、**Verify Expression With Operator**（使用运算符验证表达式）和 **Verify Control Attribute**（验证控件属性）用于检查预期结果，并且可以为每个结果附上截图。
+- **对象存储库。** 从应用中捕获的 UI 目标，由项目中所有测试用例共享。
+- **Test Explorer。** 在构建过程中运行和调试测试用例。它的结果只在当前 Studio 会话中保留。
+- **VB 或 C#。** 两种表达式语言都支持，测试用例也可以直接用代码编写。
+- **发布。** 将项目发布到 **Orchestrator Tenant Process Feed**（Orchestrator 租户流程源）后，会在 Orchestrator 中创建对应的流程。Test Manager 运行的是最新发布的版本。
+
+### 🎫 许可证 { #licenses }
 
 <div class="feature-grid" markdown>
 
@@ -189,7 +189,7 @@ A **test automation project** is the Studio project type for application testing
 <span class="f-icon">🎫</span>
 <span class="f-title" markdown="span">App Tester</span>
 
-Manual testing, test management, and running (not building) automations. Includes Agent Builder.
+手动测试、测试管理，以及运行（而非构建）自动化。包含 Agent Builder。
 
 </div>
 
@@ -197,7 +197,7 @@ Manual testing, test management, and running (not building) automations. Include
 <span class="f-icon">👩‍💻</span>
 <span class="f-title" markdown="span">App Tester Developer</span>
 
-Building automated test cases and testing automations, including agents
+构建自动化测试用例，以及测试自动化（包括智能体）
 
 </div>
 
@@ -205,21 +205,21 @@ Building automated test cases and testing automations, including agents
 <span class="f-icon">🤖</span>
 <span class="f-title" markdown="span">App Test Robot</span>
 
-Running automated tests unattended, on a robot
+在机器人上以无人值守方式运行自动化测试
 
 </div>
 
 </div>
 
-### 🔌 Where Test Cloud connects
+### 🔌 Test Cloud 的集成对象 { #where-test-cloud-connects }
 
-- **Requirements:** Jira, ServiceNow, Redmine, and other ALM tools through **Test Manager Connect**, which keeps traceability between tests and requirements.
-- **Version control:** Git and TFS, through Studio.
-- **CI/CD:** Jenkins, Azure DevOps, and GitHub Actions, so test sets run as part of your pipeline.
+- **需求：** 通过 **Test Manager Connect** 对接 Jira、ServiceNow、Redmine 及其他 ALM 工具，保持测试与需求之间的可追溯性。
+- **版本控制：** 通过 Studio 对接 Git 和 TFS。
+- **CI/CD：** 对接 Jenkins、Azure DevOps 和 GitHub Actions，让测试集成为流水线的一部分。
 
-## ✨ Agentic Testing in UiPath Test Cloud
+## ✨ UiPath Test Cloud 中的智能体测试 { #agentic-testing-in-uipath-test-cloud }
 
-**UiPath Test Cloud** covers the whole test lifecycle: you plan and design tests in **Test Manager**, automate them in **Studio**, and run them at scale through **Orchestrator**. Agentic testing adds AI agents at each of those steps. They extend what a tester does. They don't replace the tester.
+**UiPath Test Cloud** 覆盖整个测试生命周期：你在 **Test Manager** 中规划和设计测试，在 **Studio** 中实现自动化，再通过 **Orchestrator** 大规模运行。智能体测试在每一个环节都加入了 AI 智能体。它们是测试人员能力的延伸，而不是替代。
 
 <div class="circles" markdown>
 
@@ -227,9 +227,9 @@ Running automated tests unattended, on a robot
 <span class="num">1</span>
 <div class="ci-body" markdown>
 
-**Plan <span class="pill">Test Manager</span>**
+**规划 <span class="pill">Test Manager</span>**
 
-Requirements, test cases with manual steps, test sets
+需求、包含手动步骤的测试用例、测试集
 
 </div>
 </div>
@@ -238,9 +238,9 @@ Requirements, test cases with manual steps, test sets
 <span class="num">2</span>
 <div class="ci-body" markdown>
 
-**Automate <span class="pill">Studio</span>**
+**自动化 <span class="pill">Studio</span>**
 
-Test automation projects, Given / When / Then test cases, the Object Repository
+测试自动化项目、Given / When / Then 测试用例、对象存储库
 
 </div>
 </div>
@@ -249,9 +249,9 @@ Test automation projects, Given / When / Then test cases, the Object Repository
 <span class="num">3</span>
 <div class="ci-body" markdown>
 
-**Execute <span class="pill">Test Manager + Orchestrator</span>**
+**执行 <span class="pill">Test Manager + Orchestrator</span>**
 
-Run test sets manually or automated, on robots
+以手动或自动化方式在机器人上运行测试集
 
 </div>
 </div>
@@ -260,147 +260,147 @@ Run test sets manually or automated, on robots
 <span class="num">4</span>
 <div class="ci-body" markdown>
 
-**Analyze <span class="pill">Test Manager</span>**
+**分析 <span class="pill">Test Manager</span>**
 
-Results, test case logs, assertions, screenshots, reports
-
-</div>
-</div>
+结果、测试用例日志、断言、截图、报告
 
 </div>
+</div>
 
-### 🤖 Autopilot for Testers
+</div>
 
-UiPath ships testing agents out of the box, built into Studio and Test Manager. These are the ones you'll use in the session:
+### 🤖 Autopilot for Testers { #autopilot-for-testers }
+
+UiPath 开箱即提供多个测试智能体，内置于 Studio 和 Test Manager 中。本次课程会用到下面这些：
 
 <div class="feature-grid" markdown>
 
 <div class="feature" markdown>
 <span class="f-icon">📝</span>
-<span class="f-title" markdown="span">Autopilot panel <span class="pill ">Studio</span></span>
+<span class="f-title" markdown="span">Autopilot panel（Autopilot 面板） <span class="pill ">Studio</span></span>
 
-Generates requirements from a document you give it, and test sets from your test cases, and saves them to the Test Manager project your Studio project is connected to
+根据你提供的文档生成需求，根据你的测试用例生成测试集，并保存到 Studio 项目所连接的 Test Manager 项目中
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🔍</span>
-<span class="f-title" markdown="span">Evaluation Agent <span class="pill ">Test Manager</span></span>
+<span class="f-title" markdown="span">Evaluation Agent（评估智能体） <span class="pill ">Test Manager</span></span>
 
-Checks a requirement for clarity, completeness, and testability
+检查需求是否清晰、完整、可测试
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🧪</span>
-<span class="f-title" markdown="span">Test Case Generation Agent <span class="pill ">Test Manager</span></span>
+<span class="f-title" markdown="span">Test Case Generation Agent（测试用例生成智能体） <span class="pill ">Test Manager</span></span>
 
-Generates test cases from a requirement, steered by the **Prompt Library**: Valid E2E Scenario Testing, End-to-End Flow Verification, Rapid Test Idea Generation, Elusive Issue Detection, Boundary-Value Testing, and your own saved prompts
+根据需求生成测试用例，生成方向由 **Prompt Library**（提示词库）引导：Valid E2E Scenario Testing、End-to-End Flow Verification、Rapid Test Idea Generation、Elusive Issue Detection、Boundary-Value Testing，以及你自己保存的提示词
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🎬</span>
-<span class="f-title" markdown="span">Run Autonomously <span class="pill ">Test Manager</span></span>
+<span class="f-title" markdown="span">Run Autonomously（自主运行） <span class="pill ">Test Manager</span></span>
 
-Runs a test case from its manual steps, without an automation. You can watch it live, and each step's execution is documented with a screenshot
+无需自动化，直接按手动步骤运行测试用例。你可以实时观看，每个步骤的执行情况都会附带截图记录
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🔎</span>
-<span class="f-title" markdown="span">Autopilot Search <span class="pill ">Test Manager</span></span>
+<span class="f-title" markdown="span">Autopilot Search（Autopilot 搜索） <span class="pill ">Test Manager</span></span>
 
-Finds requirements, test cases, and other objects from a plain-English question
+用自然语言提问，即可查找需求、测试用例和其他对象
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">📥</span>
-<span class="f-title" markdown="span">Import Test Cases <span class="pill ">Test Manager</span></span>
+<span class="f-title" markdown="span">Import Test Cases（导入测试用例） <span class="pill ">Test Manager</span></span>
 
-Imports manual test cases from an Excel file, with a prompt that tells Autopilot how to read it
+从 Excel 文件导入手动测试用例，并用一段提示词告诉 Autopilot 如何读取这个文件
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">📊</span>
-<span class="f-title" markdown="span">Generate Insights <span class="pill ">Test Manager</span></span>
+<span class="f-title" markdown="span">Generate Insights（生成洞察） <span class="pill ">Test Manager</span></span>
 
-Builds a report from selected test results: overview, top failing tests, common errors, error patterns, and recommendations
+基于选定的测试结果生成报告：概览、失败最多的测试、常见错误、错误模式以及改进建议
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🪄</span>
-<span class="f-title" markdown="span">Generate Test Case with Autopilot <span class="pill ">Studio</span></span>
+<span class="f-title" markdown="span">Generate Test Case with Autopilot（使用 Autopilot 生成测试用例） <span class="pill ">Studio</span></span>
 
-In **Test Explorer**, turns a manual test case into an automated one, using the project's Object Repository to find the UI elements
-
-</div>
+在 **Test Explorer** 中把手动测试用例转换为自动化测试用例，并利用项目的对象存储库定位 UI 元素
 
 </div>
 
-You can also build your own agents for the parts of your test process that are specific to your team.
+</div>
 
-### 🪄 Autopilot for Developers
+针对团队测试流程中独有的环节，你还可以构建自己的智能体。
 
-Autopilot for Developers lives in Studio, where you build and fix automations. It uses the workflow's context — variables, data types, and the current expression — to suggest or apply changes:
+### 🪄 Autopilot for Developers { #autopilot-for-developers }
+
+Autopilot for Developers 位于 Studio 中，也就是你构建和修复自动化的地方。它会利用工作流的上下文（变量、数据类型以及当前表达式）来建议或直接应用修改：
 
 <div class="feature-grid" markdown>
 
 <div class="feature" markdown>
 <span class="f-icon">🪄</span>
-<span class="f-title" markdown="span">Fix</span>
+<span class="f-title" markdown="span">修复</span>
 
-📍 The magic wand at the top of the **Expression Editor**
+📍 **Expression Editor**（表达式编辑器）顶部的魔法棒
 
-Corrects an expression with a validation error
+修正存在验证错误的表达式
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">✍️</span>
-<span class="f-title" markdown="span">Generate or change an expression</span>
+<span class="f-title" markdown="span">生成或修改表达式</span>
 
-📍 The Autopilot box at the bottom of the **Expression Editor**
+📍 **Expression Editor** 底部的 Autopilot 输入框
 
-Writes or rewrites the expression from a plain-English instruction, such as *"Change the result of this expression to String"*
+根据自然语言指令编写或改写表达式，例如 *"Change the result of this expression to String"*（把这个表达式的结果改为 String）
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">📝</span>
-<span class="f-title" markdown="span">Generate from an annotation</span>
+<span class="f-title" markdown="span">根据注释生成</span>
 
-📍 The Autopilot options next to a workflow annotation
+📍 工作流注释旁边的 Autopilot 选项
 
-Generates the activities the annotation describes
-
-</div>
+生成注释中描述的活动
 
 </div>
 
-!!! tip "Prompting Autopilot"
-    Be clear, specific, and concise. Say what output you expect and in what format, and set limits where you need them. *"Summarize this."* gets a vague answer. *"Summarize the following text in 100 words, highlighting key findings."* gets a useful one.
+</div>
 
-## 💻 What's a coding agent?
+!!! tip "如何给 Autopilot 写提示词"
+    要清晰、具体、简洁。说明你期望的输出内容和格式，必要时设定限制。*"Summarize this."*（总结一下）只会得到一个笼统的回答；*"Summarize the following text in 100 words, highlighting key findings."*（用 100 个词总结以下文本，突出关键发现）才能得到真正有用的结果。
 
-A coding agent is an AI assistant that reads, writes, and reasons about code — not just autocompletes it. Instead of suggesting the next line, it understands a goal described in plain English, explores the codebase, makes decisions, and generates entire working components. You stay in control: you review what it builds, ask it to adjust, and iterate until it's right.
+## 💻 什么是编码智能体？ { #whats-a-coding-agent }
 
-Several coding agents are available today, each with their own strengths:
+编码智能体是一种能阅读、编写代码并对代码进行推理的 AI 助手，而不只是自动补全。它不是简单地建议下一行代码，而是理解你用自然语言描述的目标，探索代码库，做出决策，并生成完整可用的组件。控制权始终在你手里：你审查它构建的内容，让它调整，反复迭代直到满意为止。
 
-- **Claude Code** — Anthropic's CLI-based agent, runs in your terminal, deeply integrated with the file system. This is the one used in this exercise.
-- **Codex CLI** — OpenAI's command-line coding agent, similar terminal-first approach
-- **Cursor** — an IDE built around AI, tight editor integration with inline generation and multi-file context
-- **Gemini CLI** — Google's terminal agent, strong on reasoning and long context
-- **GitHub Copilot Agent** — embedded in VS Code and JetBrains, well suited for in-editor workflows
+如今已有多种编码智能体可选，各有所长：
 
-What makes coding agents especially powerful for UiPath work is the skill layer: by loading domain-specific knowledge about UiPath activities, APIs, and project conventions, the agent can generate production-ready test automation — not generic boilerplate. That's exactly what the UiPath skills in this exercise do.
+- **Claude Code**：Anthropic 推出的基于 CLI（命令行）的智能体，在终端中运行，与文件系统深度集成。本次练习使用的就是它。
+- **Codex CLI**：OpenAI 的命令行编码智能体，同样以终端为主
+- **Cursor**：围绕 AI 打造的 IDE，与编辑器紧密集成，支持行内生成和多文件上下文
+- **Gemini CLI**：Google 的终端智能体，擅长推理和长上下文
+- **GitHub Copilot Agent**：内嵌于 VS Code 和 JetBrains，非常适合在编辑器内完成工作
 
-## 🧠 The Mental Model
+编码智能体之所以特别适合 UiPath 工作，关键在于技能层：通过加载有关 UiPath 活动、API 和项目约定的领域知识，智能体能够生成可直接用于生产的测试自动化，而不是千篇一律的样板代码。这正是本次练习中 UiPath skills（UiPath 技能）所做的事情。
 
-Five concepts show up in every coding agent:
+## 🧠 心智模型 { #the-mental-model }
+
+每个编码智能体都离不开这五个概念：
 
 <div class="circles" markdown>
 
@@ -408,9 +408,9 @@ Five concepts show up in every coding agent:
 <span class="num">1</span>
 <div class="ci-body" markdown>
 
-**Tools**
+**工具（Tools）**
 
-Built-in actions the agent can take: read a file, run a bash command, search the web, edit code, etc.
+智能体可以执行的内置操作：读取文件、运行 bash 命令、搜索网页、编辑代码等。
 
 </div>
 </div>
@@ -419,9 +419,9 @@ Built-in actions the agent can take: read a file, run a bash command, search the
 <span class="num">2</span>
 <div class="ci-body" markdown>
 
-**Skills**
+**技能（Skills）**
 
-Domain knowledge bundles the agent loads when it sees a matching task. Like a playbook for one thing.
+领域知识包，智能体遇到匹配的任务时就会加载。就像专门针对某件事的操作手册。
 
 </div>
 </div>
@@ -430,9 +430,9 @@ Domain knowledge bundles the agent loads when it sees a matching task. Like a pl
 <span class="num">3</span>
 <div class="ci-body" markdown>
 
-**Commands**
+**命令（Commands）**
 
-Manual shortcuts you type: `/commit`, `/test`, `/deploy`. Triggered by you, not the agent.
+你手动输入的快捷方式：`/commit`、`/test`、`/deploy`。由你触发，而不是智能体。
 
 </div>
 </div>
@@ -441,9 +441,9 @@ Manual shortcuts you type: `/commit`, `/test`, `/deploy`. Triggered by you, not 
 <span class="num">4</span>
 <div class="ci-body" markdown>
 
-**Hooks**
+**钩子（Hooks）**
 
-Run automatically at lifecycle events: before an edit, after a commit, on session start. Used for guardrails.
+在生命周期事件发生时自动运行：编辑之前、提交之后、会话开始时。用于设置防护措施。
 
 </div>
 </div>
@@ -452,21 +452,21 @@ Run automatically at lifecycle events: before an edit, after a commit, on sessio
 <span class="num">5</span>
 <div class="ci-body" markdown>
 
-**Subagents**
+**子智能体（Subagents）**
 
-Specialised workers spawned by the main agent. Used to parallelise or isolate complex tasks.
-
-</div>
-</div>
+由主智能体派生出来的专职工作者。用于并行处理或隔离复杂任务。
 
 </div>
+</div>
 
-!!! info "Plugins"
-    A plugin is a package that bundles any of these together — like a Marketplace app for your coding agent. The UiPath skills used in this exercise are plugins.
+</div>
 
-## 🔧 Tools, in practice
+!!! info "插件（Plugins）"
+    插件是把上述任意组件打包在一起的软件包，相当于编码智能体的「应用市场应用」。本次练习中使用的 UiPath skills 就是插件。
 
-Claude Code's built-in tools are always available — no setup required:
+## 🔧 工具实战 { #tools-in-practice }
+
+Claude Code 的内置工具随时可用，无需任何配置：
 
 <div class="feature-grid" markdown>
 
@@ -474,7 +474,7 @@ Claude Code's built-in tools are always available — no setup required:
 <span class="f-icon">📖</span>
 <span class="f-title" markdown="span">Read</span>
 
-Read any file in your project
+读取项目中的任意文件
 
 </div>
 
@@ -482,7 +482,7 @@ Read any file in your project
 <span class="f-icon">✏️</span>
 <span class="f-title" markdown="span">Edit / Write</span>
 
-Modify or create files
+修改或创建文件
 
 </div>
 
@@ -490,7 +490,7 @@ Modify or create files
 <span class="f-icon">⌨️</span>
 <span class="f-title" markdown="span">Bash</span>
 
-Execute shell commands
+执行 shell 命令
 
 </div>
 
@@ -498,7 +498,7 @@ Execute shell commands
 <span class="f-icon">🔍</span>
 <span class="f-title" markdown="span">Glob / Grep</span>
 
-Search across the codebase
+在整个代码库中搜索
 
 </div>
 
@@ -506,7 +506,7 @@ Search across the codebase
 <span class="f-icon">🌐</span>
 <span class="f-title" markdown="span">WebSearch / WebFetch</span>
 
-Look things up online
+上网查找资料
 
 </div>
 
@@ -514,55 +514,55 @@ Look things up online
 <span class="f-icon">👥</span>
 <span class="f-title" markdown="span">Task</span>
 
-Spawn a subagent
+派生一个子智能体
 
 </div>
 
 </div>
 
-!!! info "Extension Tools (MCP)"
-    MCP (Model Context Protocol) is the standard way to give your coding agent new tools without changing the agent itself.
+!!! info "扩展工具（MCP）"
+    MCP（Model Context Protocol，模型上下文协议）是为编码智能体添加新工具的标准方式，无需改动智能体本身。
 
-    - **GitHub MCP** — read issues, open PRs
-    - **Atlassian MCP** — Jira, Confluence
-    - **Slack MCP** — read channels, post messages
-    - **Custom UiPath MCP** — call Orchestrator, Maestro
+    - **GitHub MCP**：读取 issue、创建 PR
+    - **Atlassian MCP**：Jira、Confluence
+    - **Slack MCP**：读取频道、发送消息
+    - **Custom UiPath MCP**：调用 Orchestrator、Maestro
 
-## 🧩 Skills, in practice
+## 🧩 技能实战 { #skills-in-practice }
 
-A skill is a folder — sitting in `.claude/skills/` (or equivalent), with a `SKILL.md` inside.
+一个技能就是一个文件夹，位于 `.claude/skills/`（或等效位置）下，里面有一个 `SKILL.md` 文件。
 
 <div class="feature-grid" markdown>
 
 <div class="feature" markdown>
 <span class="f-icon">🔎</span>
-<span class="f-title" markdown="span">Discovered automatically</span>
+<span class="f-title" markdown="span">自动发现</span>
 
-The agent reads each `SKILL.md`'s description. When your prompt matches, it loads the full skill on demand.
+智能体会读取每个 `SKILL.md` 的描述。当你的提示词与之匹配时，它会按需加载完整的技能。
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">📦</span>
-<span class="f-title" markdown="span">More than just text</span>
+<span class="f-title" markdown="span">不只是文本</span>
 
-Skills can bundle reference docs, code patterns, helper scripts, even compiled binaries the agent can run.
+技能可以打包参考文档、代码模式、辅助脚本，甚至是智能体可以运行的已编译二进制文件。
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🔒</span>
-<span class="f-title" markdown="span">Scoped permissions</span>
+<span class="f-title" markdown="span">限定权限</span>
 
-A skill declares which tools it's allowed to use. Bash access can be tightly controlled.
-
-</div>
+技能会声明它允许使用哪些工具。Bash 访问权限可以被严格控制。
 
 </div>
 
-### 📄 What's in a SKILL.md file
+</div>
 
-Every skill is built around a single `SKILL.md` file. Here's what one looks like:
+### 📄 SKILL.md 文件里有什么 { #whats-in-a-skillmd-file }
+
+每个技能都围绕一个 `SKILL.md` 文件构建。下面是一个示例：
 
 ```yaml
 ---
@@ -586,7 +586,7 @@ When the user asks to work with Test Manager:
 - references/test-result-report-guide.md
 ```
 
-The file has four parts:
+这个文件由四部分组成：
 
 <div class="circles" markdown>
 
@@ -594,9 +594,9 @@ The file has four parts:
 <span class="num">1</span>
 <div class="ci-body" markdown>
 
-**Frontmatter**
+**Frontmatter（前置元数据）**
 
-Declares the skill's name, description, and which tools it's allowed to use.
+声明技能的名称、描述，以及允许使用的工具。
 
 </div>
 </div>
@@ -605,9 +605,9 @@ Declares the skill's name, description, and which tools it's allowed to use.
 <span class="num">2</span>
 <div class="ci-body" markdown>
 
-**Discovery prompt**
+**发现提示词**
 
-The `description` field is what the agent matches against your request — this is how the skill gets loaded automatically.
+`description` 字段是智能体用来与你的请求进行匹配的依据，技能就是这样被自动加载的。
 
 </div>
 </div>
@@ -616,9 +616,9 @@ The `description` field is what the agent matches against your request — this 
 <span class="num">3</span>
 <div class="ci-body" markdown>
 
-**Instructions**
+**指令**
 
-The body of the file: a step-by-step prompt the agent follows when the skill is active.
+文件的正文：技能激活时智能体遵循的分步提示词。
 
 </div>
 </div>
@@ -627,81 +627,81 @@ The body of the file: a step-by-step prompt the agent follows when the skill is 
 <span class="num">4</span>
 <div class="ci-body" markdown>
 
-**References**
+**参考资料**
 
-Paths to files in the skill folder the agent can read for deeper context — API docs, code patterns, example projects.
-
-</div>
-</div>
+指向技能文件夹中其他文件的路径，智能体可以读取它们获取更深入的上下文，例如 API 文档、代码模式、示例项目。
 
 </div>
+</div>
 
-## 🔗 Where UiPath fits in this picture
+</div>
 
-UiPath ships a plugin for Claude Code. It bundles skills, hooks, and references — giving the agent domain knowledge about UiPath products out of the box.
+## 🔗 UiPath 在其中的位置 { #where-uipath-fits-in-this-picture }
+
+UiPath 为 Claude Code 提供了一个插件。它打包了技能、钩子和参考资料，让智能体开箱即具备 UiPath 产品的领域知识。
 
 ```bash
 npm -g install @uipath/cli
 uip skills install
 ```
 
-The plugin contains three things:
+这个插件包含三部分内容：
 
 <div class="feature-grid" markdown>
 
 <div class="feature" markdown>
 <span class="f-icon">🧩</span>
-<span class="f-title" markdown="span">20+ skills</span>
+<span class="f-title" markdown="span">20+ 个技能</span>
 
-Domain knowledge for every UiPath product: `uipath-test`, `uipath-rpa`, `uipath-platform`, `uipath-agents`, `uipath-maestro-flow`, and more.
+覆盖每个 UiPath 产品的领域知识：`uipath-test`、`uipath-rpa`、`uipath-platform`、`uipath-agents`、`uipath-maestro-flow` 等。
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🤖</span>
-<span class="f-title" markdown="span">1 subagent</span>
+<span class="f-title" markdown="span">1 个子智能体</span>
 
-`uipath-project-discovery-agent` — auto-runs on first contact with a UiPath project and builds context for the agent.
+`uipath-project-discovery-agent`：首次接触 UiPath 项目时自动运行，为智能体构建上下文。
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🪝</span>
-<span class="f-title" markdown="span">Hooks & references</span>
+<span class="f-title" markdown="span">钩子与参考资料</span>
 
-Session-start nudges, activity docs, and allowlists for safe read-only commands.
-
-</div>
+会话启动时的提示、活动文档，以及安全只读命令的允许列表。
 
 </div>
 
-## 📚 The UiPath skill catalog
+</div>
 
-The plugin includes skills for every part of the UiPath platform. Three of them drive the labs in this exercise:
+## 📚 UiPath 技能目录 { #the-uipath-skill-catalog }
+
+这个插件包含覆盖 UiPath 平台各个部分的技能。本次练习的实验由其中三个驱动：
 
 <div class="feature-grid" markdown>
 
 <div class="feature" markdown>
 <span class="f-icon">🧩</span>
-<span class="f-title" markdown="span">`uipath-test` <span class="pill ">Used today</span></span>
+<span class="f-title" markdown="span">`uipath-test` <span class="pill ">今日使用</span></span>
 
-Test Manager: projects, requirements, test cases and steps, test sets, executions, failure triage, and reports. Also links Studio automations to test cases.
-
-</div>
-
-<div class="feature" markdown>
-<span class="f-icon">🧩</span>
-<span class="f-title" markdown="span">`uipath-rpa` <span class="pill ">Used today</span></span>
-
-Generate and edit Studio projects with a discovery-first approach, including test automation projects, Given / When / Then test cases, and data-driven tests
+Test Manager：项目、需求、测试用例及步骤、测试集、执行、失败分析和报告。还能把 Studio 自动化关联到测试用例。
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🧩</span>
-<span class="f-title" markdown="span">`uipath-platform` <span class="pill ">Used today</span></span>
+<span class="f-title" markdown="span">`uipath-rpa` <span class="pill ">今日使用</span></span>
 
-Auth, Orchestrator management (folders, packages, assets), Integration Service, CLI tools
+以「先发现、再动手」的方式生成和编辑 Studio 项目，包括测试自动化项目、Given / When / Then 测试用例和数据驱动测试
+
+</div>
+
+<div class="feature" markdown>
+<span class="f-icon">🧩</span>
+<span class="f-title" markdown="span">`uipath-platform` <span class="pill ">今日使用</span></span>
+
+认证、Orchestrator 管理（文件夹、包、资产）、Integration Service、CLI 工具
 
 </div>
 
@@ -709,7 +709,7 @@ Auth, Orchestrator management (folders, packages, assets), Integration Service, 
 <span class="f-icon">🧩</span>
 <span class="f-title" markdown="span">`uipath-troubleshoot`</span>
 
-Root-cause investigation when a job or a run behaves unexpectedly
+当作业或运行出现异常时进行根因调查
 
 </div>
 
@@ -717,7 +717,7 @@ Root-cause investigation when a job or a run behaves unexpectedly
 <span class="f-icon">🧩</span>
 <span class="f-title" markdown="span">`uipath-agents`</span>
 
-Scaffold, build, run, evaluate, and deploy coded and low-code agents
+搭建、构建、运行、评估和部署编码智能体与低代码智能体
 
 </div>
 
@@ -725,37 +725,37 @@ Scaffold, build, run, evaluate, and deploy coded and low-code agents
 <span class="f-icon">🧩</span>
 <span class="f-title" markdown="span">`uipath-maestro-flow`</span>
 
-Create, validate, and debug UiPath Flow projects
+创建、验证和调试 UiPath Flow 项目
 
 </div>
 
 </div>
 
-!!! tip "Skills used in this exercise"
-    The three skills in bold — `uipath-test`, `uipath-rpa`, and `uipath-platform` — are the ones a coding agent uses if you pick it to automate a test case or run test sets in the hands-on session.
+!!! tip "本次练习使用的技能"
+    加粗显示的三个技能：`uipath-test`、`uipath-rpa` 和 `uipath-platform`。在动手实践课程中，如果你选择用编码智能体来自动化测试用例或运行测试集，它用到的就是这三个技能。
 
-## ⚖️ Where the coding agent fits
+## ⚖️ 编码智能体的定位 { #where-the-coding-agent-fits }
 
-Autopilot works inside one product at a time, on what's in front of you. A coding agent works from your terminal, across products, through the `uip` CLI:
+Autopilot 一次只在一个产品内工作，处理的是你眼前的内容。编码智能体则在你的终端里，通过 `uip` CLI 跨产品工作：
 
 <div class="vs" markdown>
 <div class="vs-side" markdown>
-<span class="f-title" markdown="span">🤖 Autopilot for Testers and for Developers</span>
+<span class="f-title" markdown="span">🤖 Autopilot for Testers 与 Autopilot for Developers</span>
 
-- **Where you use it:** Inside Studio or Test Manager
-- **What it sees:** The requirement, expression, or results in front of you
-- **Best for:** Requirements and test cases from a document, requirement quality, test case suggestions, fixing an expression, explaining results
+- **在哪里使用：** 在 Studio 或 Test Manager 内部
+- **它能看到什么：** 你眼前的需求、表达式或结果
+- **最适合：** 从文档生成需求和测试用例、评估需求质量、建议测试用例、修复表达式、解释结果
 
 </div>
 <div class="vs-mid">VS</div>
 <div class="vs-side alt" markdown>
-<span class="f-title" markdown="span">💻 Coding agent + UiPath skills</span>
+<span class="f-title" markdown="span">💻 编码智能体 + UiPath skills</span>
 
-- **Where you use it:** Your terminal or editor
-- **What it sees:** Files on your machine, your Studio project, Test Manager, and Orchestrator in one session
-- **Best for:** Work that spans files and products: checking coverage against a document, a suite of Given / When / Then automations, publish, link, run, and report
+- **在哪里使用：** 你的终端或编辑器
+- **它能看到什么：** 在同一个会话中看到你机器上的文件、你的 Studio 项目、Test Manager 和 Orchestrator
+- **最适合：** 跨文件、跨产品的工作：对照文档检查覆盖率、批量编写 Given / When / Then 自动化，以及发布、关联、运行和报告
 
 </div>
 </div>
 
-In the hands-on session, Autopilot leads. Autopilot in Studio writes the requirements and the test sets, and Autopilot in Test Manager evaluates the requirements, generates the test cases, and runs one autonomously. You automate the Login test case by hand, so you know what good looks like. Then you automate the next one with Autopilot in Studio or a coding agent, and compare the two.
+在动手实践课程中，Autopilot 唱主角。Studio 中的 Autopilot 编写需求和测试集，Test Manager 中的 Autopilot 评估需求、生成测试用例，并自主运行其中一个。Login 测试用例由你亲手实现自动化，这样你就知道「好的自动化」长什么样。接着，你用 Studio 中的 Autopilot 或编码智能体来自动化下一个测试用例，再把两者做个对比。

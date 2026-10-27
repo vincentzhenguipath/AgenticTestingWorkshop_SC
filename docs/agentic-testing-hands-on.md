@@ -1,94 +1,94 @@
-Hands-on · Testing Setup
+动手实践 · 测试环境准备
 {: .eyebrow }
 
-# 🧭 Agentic Testing: Hands-On Session
+# 🧭 智能体测试（Agentic Testing）：动手实践课程 { #agentic-testing-hands-on-session }
 
-**Take the UiBank design document to requirements, test cases, automations, test sets, and executions in UiPath Test Cloud, with Autopilot for Testers, Autopilot for Developers, and a coding agent.**
+**借助 Autopilot for Testers、Autopilot for Developers 和编码智能体，在 UiPath Test Cloud 中把 UiBank 设计文档一步步变成需求、测试用例、自动化、测试集和执行。**
 
-## 👋 Overview
+## 👋 概述 { #overview }
 
-A QA team at a bank gets a new application description every sprint. Someone turns it into requirements. Someone types the test cases into **Test Manager** by hand. Someone else rebuilds each one in **Studio**, capturing every field and button. A fourth person groups them into test sets, runs them, and copies the results into a status email. That's four handoffs and hours of clicking, and the document, the requirements, the test cases, and the automations drift apart within a month.
+某银行的 QA 团队每个迭代都会收到一份新的应用说明。有人把它整理成需求；有人在 **Test Manager** 里手动录入测试用例；又有人在 **Studio** 里逐个重建，把每个字段、每个按钮都捕获一遍；第四个人把它们分组成测试集、运行，再把结果复制进状态邮件。四次交接，几个小时的点点点——而且不出一个月，文档、需求、测试用例和自动化就各说各话了。
 
-In this session you'll do each of those jobs with AI agents, and see where a human still makes the call. **Autopilot** works inside the product: in **Studio** it creates requirements, test cases, test sets, and expressions, and in **Test Manager** it evaluates requirements, generates test cases, and runs a test case autonomously. A **coding agent** such as **Codex** or **Claude Code** works from your terminal and does the same automation work through the **`uip` CLI** and the **UiPath skills**. You'll build one test case by hand first, so you can judge what the agents build for you.
+在本次课程中，你会让 AI 智能体来完成上面每一项工作，同时看清哪些地方仍需要人来拍板。**Autopilot** 在产品内部工作：在 **Studio** 中，它可以创建需求、测试用例、测试集和表达式；在 **Test Manager** 中，它可以评估需求、生成测试用例，并自主运行测试用例。**Codex** 或 **Claude Code** 这样的**编码智能体**则在你的终端里工作，通过 **`uip` CLI**（命令行）和 **UiPath skills**（UiPath 技能）完成同样的自动化工作。你会先亲手构建一个测试用例，这样才能判断智能体替你做出来的东西好不好。
 
-!!! tip "Training Environment"
-    Log in at **[{{ training_url }}]({{ training_url }})** using tenant **{{ training_tenant }}**. The Autopilot features in this session are on **{{ env_label }}**, so make sure Studio, the `uip` CLI, and your browser all point there.
+!!! tip "培训环境"
+    请访问 **[{{ training_url }}]({{ training_url }})**，使用租户 **{{ training_tenant }}** 登录。本课程中的 Autopilot 功能运行在 **{{ env_label }}** 上，请确保 Studio、`uip` CLI 和浏览器都指向这个环境。
 
-## 🗺️ What You'll Do
+## 🗺️ 你将做什么 { #what-youll-do }
 
-The hands-on part follows the [Agenda](agenda.md):
+动手实践部分按照[议程](agenda.md)进行：
 
 <div class="feature-grid" markdown>
 
 <div class="feature" markdown>
 <span class="f-icon">⚙️</span>
-<span class="f-title" markdown="span">**[Setup](#setup)**</span>
+<span class="f-title" markdown="span">**[环境准备](#setup)**</span>
 
-Create a new project in Test Manager, a new test automation project in Studio, and connect them
+在 Test Manager 中新建项目，在 Studio 中新建测试自动化项目，并把两者连接起来
 
-👤 You
+👤 你
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">📋</span>
-<span class="f-title" markdown="span">**[Requirements](requirements.md)**</span>
+<span class="f-title" markdown="span">**[需求](requirements.md)**</span>
 
-Turn the UiBank design document into requirements, discuss them, evaluate their quality, improve them, and evaluate again
+把 UiBank 设计文档转化为需求，讨论它们、评估质量、加以改进，再重新评估
 
-👤 **Autopilot in Studio**, **Autopilot in Test Manager**, you
+👤 **Studio 中的 Autopilot**、**Test Manager 中的 Autopilot**、你
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🧪</span>
-<span class="f-title" markdown="span">**[Test Cases](test-cases.md)**</span>
+<span class="f-title" markdown="span">**[测试用例](test-cases.md)**</span>
 
-Generate test cases from a requirement, automate the Login test case by hand, generate the next one, see a test case run autonomously, and add a few more
+根据需求生成测试用例，亲手自动化 Login 测试用例，生成下一个，观看测试用例自主运行，再多加几个
 
-👤 **Autopilot in Test Manager**, you, **Autopilot in Studio** or a **coding agent**
+👤 **Test Manager 中的 Autopilot**、你、**Studio 中的 Autopilot** 或**编码智能体**
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">▶️</span>
-<span class="f-title" markdown="span">**[Executions](executions.md)**</span>
+<span class="f-title" markdown="span">**[执行](executions.md)**</span>
 
-Read what every run left behind
+解读每次运行留下的记录
 
-👤 You
+👤 你
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">📦</span>
-<span class="f-title" markdown="span">**[Test Sets](test-sets.md)**</span>
+<span class="f-title" markdown="span">**[测试集](test-sets.md)**</span>
 
-Create test sets from your test cases, run them, and look into their executions
+用你的测试用例创建测试集，运行它们，并查看其执行情况
 
-👤 **Autopilot in Studio**, you
+👤 **Studio 中的 Autopilot**、你
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🚀</span>
-<span class="f-title" markdown="span">**[Next Steps](#next-steps)**</span>
+<span class="f-title" markdown="span">**[后续步骤](#next-steps)**</span>
 
-Take it back to your own application
+把这一切带回你自己的应用
 
-👤 You
-
-</div>
+👤 你
 
 </div>
 
-## 🏦 The scenario
+</div>
+
+## 🏦 场景 { #the-scenario }
 
 <div style="font-family: inherit; margin: 1.5rem 0 2rem;">
 
   <div style="background: #16213e; border-left: 10px solid #FA4616; padding: 26px 32px; margin-bottom: 22px;">
-    <div style="font-size: 20px; font-weight: 700; color: #ffffff; line-height: 1.35;">A bank's QA team is moving its regression suite to agentic testing.</div>
-    <div style="font-size: 15px; font-style: italic; color: #f6c3ab; margin-top: 10px; line-height: 1.45;">One design document. Requirements, test cases, test sets, and executions, built with Autopilot and a coding agent, with a tester deciding what counts as a pass.</div>
+    <div style="font-size: 20px; font-weight: 700; color: #ffffff; line-height: 1.35;">一家银行的 QA 团队正在把回归测试套件迁移到智能体测试。</div>
+    <div style="font-size: 15px; font-style: italic; color: #f6c3ab; margin-top: 10px; line-height: 1.45;">一份设计文档。需求、测试用例、测试集和执行，都由 Autopilot 和编码智能体构建，而由测试人员来决定什么才算通过。</div>
   </div>
 
   <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: stretch;">
@@ -97,101 +97,101 @@ Take it back to your own application
       <span style="font-size: 40px; line-height: 46px;">📋</span>
       <span style="font-size: 34px; font-weight: 700; color: #f6c3ab; line-height: 1;">01</span>
     </div>
-    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">Requirements</div>
-    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Autopilot in Studio writes them from the document. Autopilot in Test Manager grades them.</div>
-    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; 8 evaluated requirements</div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">需求</div>
+    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Studio 中的 Autopilot 根据文档编写需求，Test Manager 中的 Autopilot 为它们打分。</div>
+    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; 8 条已评估的需求</div>
   </div>
   <div style="flex: 1 1 200px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 5px solid #FA4616; padding: 20px 22px 22px; box-sizing: border-box;">
     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
       <span style="font-size: 40px; line-height: 46px;">🧪</span>
       <span style="font-size: 34px; font-weight: 700; color: #f6c3ab; line-height: 1;">02</span>
     </div>
-    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">Test Cases</div>
-    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Generated in Test Manager, automated by you, by Autopilot, or by a coding agent.</div>
-    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; Automated test cases</div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">测试用例</div>
+    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">在 Test Manager 中生成，由你、Autopilot 或编码智能体完成自动化。</div>
+    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; 已自动化的测试用例</div>
   </div>
   <div style="flex: 1 1 200px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 5px solid #FA4616; padding: 20px 22px 22px; box-sizing: border-box;">
     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
       <span style="font-size: 40px; line-height: 46px;">🔎</span>
       <span style="font-size: 34px; font-weight: 700; color: #f6c3ab; line-height: 1;">03</span>
     </div>
-    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">Executions</div>
-    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Every run, manual, automated, or autonomous, with its results and evidence.</div>
-    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; Results you can read</div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">执行</div>
+    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">每一次运行，无论手动、自动化还是自主执行，都附带结果和证据。</div>
+    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; 一目了然的结果</div>
   </div>
   <div style="flex: 1 1 200px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 5px solid #FA4616; padding: 20px 22px 22px; box-sizing: border-box;">
     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
       <span style="font-size: 40px; line-height: 46px;">📦</span>
       <span style="font-size: 34px; font-weight: 700; color: #f6c3ab; line-height: 1;">04</span>
     </div>
-    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">Test Sets</div>
-    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Autopilot groups your test cases. You run them and read the results.</div>
-    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; An executed test set</div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">测试集</div>
+    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Autopilot 为你的测试用例分组，你来运行并解读结果。</div>
+    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; 一个已执行的测试集</div>
   </div>
   </div>
 
 </div>
 
-How the work moves through the session:
+整个课程中，工作是这样流转的：
 
 ```text
-UiBank design document (.docx)
+UiBank 设计文档 (.docx)
    │
    ▼
-Setup          New {YourName}_UIB_Test project in Test Manager ──▶ new test automation project in Studio ──▶ connected
+环境准备       在 Test Manager 中新建 {YourName}_UIB_Test 项目 ──▶ 在 Studio 中新建测试自动化项目 ──▶ 完成连接
    │
    ▼
-Requirements   Autopilot in Studio ──▶ Requirements ──▶ Autopilot in Test Manager evaluates ──▶ you improve ──▶ re-evaluate
+需求           Studio 中的 Autopilot ──▶ 需求 ──▶ Test Manager 中的 Autopilot 评估 ──▶ 你来改进 ──▶ 重新评估
    │
    ▼
-Test Cases     Autopilot in Test Manager ──▶ Test cases (manual steps)
-                 ├─ Login: you automate it by hand in Studio
-                 ├─ Next one: Autopilot in Studio, or your coding agent, automates it
-                 ├─ Run Autonomously: Autopilot runs a manual test case itself
-                 └─ A few more
+测试用例       Test Manager 中的 Autopilot ──▶ 测试用例（手动步骤）
+                 ├─ Login：你在 Studio 中亲手自动化
+                 ├─ 下一个：由 Studio 中的 Autopilot 或你的编码智能体自动化
+                 ├─ Run Autonomously：Autopilot 亲自运行一个手动测试用例
+                 └─ 再多加几个
    │
    ▼
-Executions     Executions tab ──▶ every run so far
+执行           Executions 选项卡 ──▶ 迄今为止的每一次运行
    │
    ▼
-Test Sets      Autopilot in Studio ──▶ Test sets ──▶ publish ──▶ run ──▶ executions
+测试集         Studio 中的 Autopilot ──▶ 测试集 ──▶ 发布 ──▶ 运行 ──▶ 执行
 ```
 
-## 📄 The design document
+## 📄 设计文档 { #the-design-document }
 
-Everything in this session comes from one design document for the UiBank web application: **E2E UiBank Online Banking**. Download `E2E UiBank Online Banking.docx` and save it in your workshop folder.
+本课程的一切都源自 UiBank Web 应用的一份设计文档：**E2E UiBank Online Banking**。请下载 `E2E UiBank Online Banking.docx`，并保存到你的工作坊文件夹中。
 
-[Download the design document (.docx)](resources.assets/E2E%20UiBank%20Online%20Banking.docx){ .md-button .md-button--primary }
+[下载设计文档 (.docx)](resources.assets/E2E%20UiBank%20Online%20Banking.docx){ .md-button .md-button--primary }
 
 <div class="feature-grid" markdown>
 
 <div class="feature" markdown>
 <span class="f-icon">🏦</span>
-<span class="f-title" markdown="span">Application</span>
+<span class="f-title" markdown="span">应用</span>
 
-UiBank Web Application v2.0.0 (Accounts / Transfers / Loans / Profile)
+UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🌐</span>
-<span class="f-title" markdown="span">Environment</span>
+<span class="f-title" markdown="span">环境</span>
 
-`https://uibank.uipath.com` in Google Chrome
+在 Google Chrome 中访问 `https://uibank.uipath.com`
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">📝</span>
-<span class="f-title" markdown="span">What it describes</span>
+<span class="f-title" markdown="span">文档内容</span>
 
-Log in, open a Checking and a Savings account, transfer funds between them, apply for a loan, retrieve it by Loan ID, and verify the user profile
-
-</div>
+登录，开立一个 Checking 账户和一个 Savings 账户，在两者之间转账，申请贷款，按 Loan ID 查询贷款，并核验用户资料
 
 </div>
 
-The document describes the customer journey in eight steps. You won't test it as one long end-to-end run. Each step becomes **a requirement** and **its own test cases**, so a failure points straight at the feature that broke, and one broken screen doesn't hide the results of the others.
+</div>
+
+文档用八个步骤描述了客户旅程。你不会把它当成一条很长的端到端流程来测试，而是让每个步骤都成为**一条需求**，并拥有**自己的测试用例**。这样一旦失败，就能直接定位到出问题的功能，某个页面坏了也不会掩盖其他功能的结果。
 
 <div class="circles" markdown>
 
@@ -199,11 +199,11 @@ The document describes the customer journey in eight steps. You won't test it as
 <span class="num">0</span>
 <div class="ci-body" markdown>
 
-**Login and Initial Account State**
+**登录与初始账户状态**
 
-`/login`, `/welcome`, `/accounts`
+`/login`、`/welcome`、`/accounts`
 
-✅ Login succeeds; initial account state captured
+✅ 登录成功；记录初始账户状态
 
 </div>
 </div>
@@ -212,11 +212,11 @@ The document describes the customer journey in eight steps. You won't test it as
 <span class="num">1</span>
 <div class="ci-body" markdown>
 
-**Checking Account Creation**
+**创建 Checking 账户**
 
 `/accounts/account-apply`
 
-✅ Checking account listed in the summary
+✅ Checking 账户出现在账户汇总中
 
 </div>
 </div>
@@ -225,11 +225,11 @@ The document describes the customer journey in eight steps. You won't test it as
 <span class="num">2</span>
 <div class="ci-body" markdown>
 
-**Savings Account Creation**
+**创建 Savings 账户**
 
 `/accounts/account-apply`
 
-✅ Savings account listed in the summary
+✅ Savings 账户出现在账户汇总中
 
 </div>
 </div>
@@ -238,11 +238,11 @@ The document describes the customer journey in eight steps. You won't test it as
 <span class="num">3</span>
 <div class="ci-body" markdown>
 
-**Funds Transfer Between Accounts**
+**账户间转账**
 
 `/accounts/transfer-money`
 
-✅ Both balances change by exactly the transferred amount
+✅ 两个账户的余额变动恰好等于转账金额
 
 </div>
 </div>
@@ -251,11 +251,11 @@ The document describes the customer journey in eight steps. You won't test it as
 <span class="num">4</span>
 <div class="ci-body" markdown>
 
-**Loan Application Submission**
+**提交贷款申请**
 
 `/loans/apply`
 
-✅ Loan ID generated
+✅ 生成 Loan ID
 
 </div>
 </div>
@@ -264,11 +264,11 @@ The document describes the customer journey in eight steps. You won't test it as
 <span class="num">5</span>
 <div class="ci-body" markdown>
 
-**Loan Status Lookup**
+**查询贷款状态**
 
 `/loans/lookup`
 
-✅ Amount and term match what was submitted
+✅ 金额和期限与提交时一致
 
 </div>
 </div>
@@ -277,11 +277,11 @@ The document describes the customer journey in eight steps. You won't test it as
 <span class="num">6</span>
 <div class="ci-body" markdown>
 
-**User Profile Identity Verification**
+**用户资料身份核验**
 
 `/userprofile`
 
-✅ Username and email match the logged-in user
+✅ 用户名和邮箱与当前登录用户一致
 
 </div>
 </div>
@@ -290,136 +290,136 @@ The document describes the customer journey in eight steps. You won't test it as
 <span class="num">7</span>
 <div class="ci-body" markdown>
 
-**Logout and Evidence Collection**
+**退出登录与证据收集**
 
 `/`
 
-✅ Session closed; screenshots attached to the report
+✅ 会话已关闭；截图已附到报告中
 
 </div>
 </div>
 
 </div>
 
-### 🔢 The test data
+### 🔢 测试数据 { #the-test-data }
 
-These are the variables the design document defines. Use them in your prompts and your automations, so the requirements, the test cases, and the results all describe the same thing.
+以下是设计文档中定义的变量。请在提示词和自动化中都使用它们，让需求、测试用例和结果描述的是同一件事。
 
-| Variable | What it holds | Value / rule |
+| 变量 | 含义 | 取值 / 规则 |
 | :--- | :--- | :--- |
-| `var_Username`, `var_Password` | UiBank login | From the Orchestrator credential asset `{YourName}_UiBankCredential`. Never hard-coded. |
-| `var_CheckingNickname` | New Checking account | `AutoChecking_<yyyyMMddHHmmss>`, unique per run |
-| `var_SavingsNickname` | New Savings account | `AutoSavings_<yyyyMMddHHmmss>`, unique per run |
-| `var_TransferAmount` | Amount to transfer | `10`, never more than the source balance |
-| `var_LoanEmail` | Loan requester email | The email you registered on UiBank |
-| `var_LoanAmount` | Loan amount | `5000` |
-| `var_LoanTerm` | Loan term in years | `3` (allowed: 1, 3, 5, 10) |
-| `var_YearlyIncome` | Yearly income before taxes | `60000` |
-| `var_Age` | Requester's age | `35` |
-| `var_LoanID` | Loan ID returned by UiBank | Extracted after a loan is submitted |
+| `var_Username`, `var_Password` | UiBank 登录凭据 | 来自 Orchestrator 凭据资产 `{YourName}_UiBankCredential`，绝不硬编码。 |
+| `var_CheckingNickname` | 新建的 Checking 账户 | `AutoChecking_<yyyyMMddHHmmss>`，每次运行唯一 |
+| `var_SavingsNickname` | 新建的 Savings 账户 | `AutoSavings_<yyyyMMddHHmmss>`，每次运行唯一 |
+| `var_TransferAmount` | 转账金额 | `10`，不得超过转出账户余额 |
+| `var_LoanEmail` | 贷款申请人邮箱 | 你在 UiBank 上注册的邮箱 |
+| `var_LoanAmount` | 贷款金额 | `5000` |
+| `var_LoanTerm` | 贷款期限（年） | `3`（可选值：1、3、5、10） |
+| `var_YearlyIncome` | 税前年收入 | `60000` |
+| `var_Age` | 申请人年龄 | `35` |
+| `var_LoanID` | UiBank 返回的 Loan ID | 提交贷款后提取 |
 
-!!! warning "Three things every test case must handle"
+!!! warning "每个测试用例都必须处理的三件事"
 
-    - **It runs on its own.** Test cases run in any order, on any robot. In the document, the transfer uses the accounts from Steps 1 and 2, and the lookup uses the Loan ID from Step 4. As test cases, the transfer opens its own two accounts and the lookup submits its own loan, at the start.
-    - **No accounts yet.** A fresh UiBank user sees *"No accounts at this time, apply for a new account today!"* instead of a table. That's a valid starting state, not a failure.
-    - **Unknown rules.** UiBank is a demo app. Balances and loan decision rules aren't documented, and data can be reset. Check the loan outcome rather than assuming approval.
+    - **独立运行。** 测试用例可能以任意顺序、在任意机器人上运行。在文档里，转账使用的是第 1 步和第 2 步创建的账户，查询使用的是第 4 步得到的 Loan ID。而作为测试用例，转账要在开头自行开立两个账户，查询也要在开头自行提交一笔贷款。
+    - **还没有账户。** 全新的 UiBank 用户看到的不是表格，而是 *"No accounts at this time, apply for a new account today!"*。这是合法的初始状态，不是失败。
+    - **规则未知。** UiBank 是一个演示应用。余额和贷款审批规则都没有文档说明，数据也可能被重置。请检查贷款的实际结果，而不是默认它一定获批。
 
-### 📋 What's Test Manager?
+### 📋 Test Manager 是什么？ { #whats-test-manager }
 
 <div style="background: #16213e; border-left: 10px solid #FA4616; padding: 22px 28px; margin: 1.2rem 0 1.4rem;">
-  <div style="font-size: 19px; font-weight: 700; color: #ffffff; line-height: 1.35;">The planning and reporting hub of UiPath Test Cloud.</div>
-  <div style="font-size: 15px; font-style: italic; color: #f6c3ab; margin-top: 9px;">Requirements say what must work. Test cases say how you'll prove it. Test sets and executions say whether it did.</div>
+  <div style="font-size: 19px; font-weight: 700; color: #ffffff; line-height: 1.35;">UiPath Test Cloud 的规划与报告中枢。</div>
+  <div style="font-size: 15px; font-style: italic; color: #f6c3ab; margin-top: 9px;">需求说明什么必须可用，测试用例说明你如何证明它，测试集和执行则告诉你它到底行不行。</div>
 </div>
 
 <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: stretch; margin-bottom: 1.5rem;">
   <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
-    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">Requirement</div>
-    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">What the application must do, and the acceptance criteria</div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">需求</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">应用必须做到什么，以及验收标准</div>
   </div>
   <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
-    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">Test case</div>
-    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">A scenario with manual steps, linked to the requirement it covers, and optionally to an automation</div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">测试用例</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">一个带手动步骤的场景，关联到它所覆盖的需求，也可以关联到一个自动化</div>
   </div>
   <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
-    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">Test set</div>
-    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">The group of test cases you execute together</div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">测试集</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">一起执行的一组测试用例</div>
   </div>
   <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
-    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">Execution</div>
-    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">One run, with a log, result, and evidence per test case</div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">执行</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">一次运行，每个测试用例都有日志、结果和证据</div>
   </div>
 </div>
 
-## ⚙️ Setup
+## ⚙️ 环境准备 { #setup }
 
-<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">A Test Manager project, and a test automation project connected to it</div>
+<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">一个 Test Manager 项目，以及一个与之连接的测试自动化项目</div>
 
 <div style="background: #faf8f6; border: 1px solid #eee3dc; border-left: 4px solid #FA4616; padding: 18px 22px; margin: 1.4rem 0;">
-  <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.09em; color: #FA4616; margin-bottom: 9px;">WHAT YOU NEED</div>
-  <ul style="margin: 0; padding-left: 18px; font-size: 15px; color: #4a4a4a; line-height: 1.55;"><li style="margin-bottom: 5px;"><strong>Test Manager</strong> open in your browser on the <strong>{{ training_tenant }}</strong> tenant.</li></ul>
+  <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.09em; color: #FA4616; margin-bottom: 9px;">你需要准备</div>
+  <ul style="margin: 0; padding-left: 18px; font-size: 15px; color: #4a4a4a; line-height: 1.55;"><li style="margin-bottom: 5px;">在浏览器中打开 <strong>{{ training_tenant }}</strong> 租户上的 <strong>Test Manager</strong>。</li></ul>
 </div>
 
-### 🆕 Create a new project in Test Manager
+### 🆕 在 Test Manager 中新建项目 { #create-a-new-project-in-test-manager }
 
-Requirements, test cases, test sets, and executions all live in a Test Manager project. Create yours first: everything Autopilot generates in the next parts goes into it.
+需求、测试用例、测试集和执行都存放在 Test Manager 项目中。先把你的项目建好：后面各部分中 Autopilot 生成的所有内容都会放进去。
 
-1. Go to **[{{ training_url }}]({{ training_url }})**, select the **{{ training_tenant }}** tenant, and open **Test Manager**.
-2. On the **Projects** page, select **Create new project**.
-3. In the **Create new project** dialog, fill in:
-    - **Name:** `{YourName}_UIB_Test`
-    - **Prefix:** `UIB`. It must be at least 3 characters, letters and numbers only.
-    - **Description:** optional, for example *UiBank online banking tests*.
+1. 访问 **[{{ training_url }}]({{ training_url }})**，选择 **{{ training_tenant }}** 租户，然后打开 **Test Manager**。
+2. 在 **Projects**（项目）页面，选择 **Create new project**（新建项目）。
+3. 在 **Create new project** 对话框中填写：
+    - **Name:**（名称）`{YourName}_UIB_Test`
+    - **Prefix:**（前缀）`UIB`。至少 3 个字符，只能包含字母和数字。
+    - **Description:**（描述）可选，例如 *UiBank online banking tests*。
 
-    ![The Create new project dialog in Test Manager, with the name {YourName}_UIB_Test, the prefix UIB, an empty description, and the Create button](agentic-testing-hands-on.images/test-manager-create-new-project-W.png){ .screenshot width="900" }
-    *The Create new project dialog, filled in as `{YourName}_UIB_Test` with the prefix `UIB`.*
+    ![Test Manager 中的 Create new project 对话框，名称为 {YourName}_UIB_Test，前缀为 UIB，描述为空，以及 Create 按钮](agentic-testing-hands-on.images/test-manager-create-new-project-W.png){ .screenshot width="900" }
+    *Create new project 对话框，已填写 `{YourName}_UIB_Test`，前缀为 `UIB`。*
 
-    !!! info "What the prefix is for"
-        Every object in the project gets a key that starts with the prefix: the first requirement becomes `UIB:1`, the next `UIB:2`, and so on, across requirements, test cases, and test sets. Short and recognisable beats descriptive.
+    !!! info "前缀有什么用"
+        项目中的每个对象都会获得一个以前缀开头的键：第一条需求是 `UIB:1`，下一条是 `UIB:2`，依此类推，需求、测试用例和测试集统一编号。前缀要简短好认，不必追求描述性。
 
-4. Select **Create**, then open the project. It's empty for now.
-5. Set the project's default Orchestrator folder. Test sets need it to run automated test cases later.
-    1. In the project's left menu, select **Project Settings**, then the **Automation** tab.
-    2. In **Default Folder**, select `{{ training_folder }}`.
-    3. Select **Save**.
+4. 选择 **Create**（创建），然后打开项目。目前它还是空的。
+5. 设置项目的默认 Orchestrator 文件夹。之后测试集运行自动化测试用例时需要用到它。
+    1. 在项目左侧菜单中选择 **Project Settings**（项目设置），然后打开 **Automation**（自动化）选项卡。
+    2. 在 **Default Folder**（默认文件夹）中选择 `{{ training_folder }}`。
+    3. 选择 **Save**（保存）。
 
-    ![The Automation tab of Project Settings in Test Manager, with AgenticTesting selected as the Default Folder and the Save button](agentic-testing-hands-on.images/test-manager-default-folder.png){ .screenshot width="800" }
-    *Project Settings > Automation, with `{{ training_folder }}` as the default folder.*
+    ![Test Manager 项目设置中的 Automation 选项卡，Default Folder 选择了 AgenticTesting，以及 Save 按钮](agentic-testing-hands-on.images/test-manager-default-folder.png){ .screenshot width="800" }
+    *Project Settings > Automation，默认文件夹为 `{{ training_folder }}`。*
 
-!!! tip "Why your name in the project name"
-    Everyone in the session works in the same tenant. Your name keeps your project easy to find in the **Projects** list, and keeps your requirements, test cases, and results apart from everyone else's.
+!!! tip "为什么项目名里要带上你的名字"
+    课程中所有人都在同一个租户里工作。带上名字，你就能在 **Projects** 列表中轻松找到自己的项目，也能让你的需求、测试用例和结果与其他人的互不干扰。
 
-### 🛠️ Create a new test automation project in UiPath Studio Desktop
+### 🛠️ 在 UiPath Studio Desktop 中新建测试自动化项目 { #create-a-new-test-automation-project-in-uipath-studio-desktop }
 
-1. Open **Studio**. On the **Start** screen, under **New Project**, select **Test Automation**.
-2. In the **New Blank Test Project** dialog, fill in:
+1. 打开 **Studio**。在 **Start**（开始）界面的 **New Project**（新建项目）下，选择 **Test Automation**（测试自动化）。
+2. 在 **New Blank Test Project**（新建空白测试项目）对话框中填写：
     - **Name:** `{YourName}UiBankTests`
-    - **Description:** optional, for example *Test Automation Project*
+    - **Description:** 可选，例如 *Test Automation Project*
 
-    ![The New Blank Test Project dialog in Studio, with the name {YourName}UiBankTests, a description, and the advanced options Location, Compatibility Cross-platform, Language VB, and Minimum Robot version](agentic-testing-hands-on.images/studio-new-test-project-W.png){ .screenshot width="900" }
+    ![Studio 中的 New Blank Test Project 对话框，名称为 {YourName}UiBankTests，带有描述，以及高级选项 Location、Compatibility Cross-platform、Language VB 和 Minimum Robot version](agentic-testing-hands-on.images/studio-new-test-project-W.png){ .screenshot width="900" }
 
-3. Select **Create**.
-4. Studio opens the new project. In the **Project** panel, expand **Dependencies** and check that the testing packages are there, such as `UiPath.Testing.Activities` and `UiPath.UIAutomation.Activities`.
+3. 选择 **Create**。
+4. Studio 会打开新项目。在 **Project**（项目）面板中展开 **Dependencies**（依赖项），确认测试相关的包都已就位，例如 `UiPath.Testing.Activities` 和 `UiPath.UIAutomation.Activities`。
 
-!!! tip "Why a test automation project"
-    A test automation project is built for test cases: it has the testing activities, the Given / When / Then template, and the **Test Explorer** panel. Each test case in it can be linked to a test case in Test Manager, and its results go back to Test Manager when it runs there.
+!!! tip "为什么要用测试自动化项目"
+    测试自动化项目就是为测试用例而生的：它自带测试活动、Given / When / Then 模板和 **Test Explorer** 面板。其中的每个测试用例都可以关联到 Test Manager 中的测试用例，在那里运行时，结果也会回传到 Test Manager。
 
-### 🔗 Connect it to Test Manager
+### 🔗 连接到 Test Manager { #connect-it-to-test-manager }
 
-The project needs to know which Test Manager project its requirements, test cases, and results belong to. Pick one way:
+项目需要知道它的需求、测试用例和结果归属于哪个 Test Manager 项目。任选一种方式：
 
-=== "In Studio"
+=== "在 Studio 中"
 
-    1. In the **Explorer** panel, right-click your project name and select **Project Settings**.
-    2. Select **Test Manager Configuration**.
-    3. Under **Test Manager Settings**, enter the Test Manager URL `{{ training_url }}/{{ training_tenant }}/testmanager_`, then select **Connect**. The status changes to **Connected**.
-    4. In **Default Project**, type the prefix `UIB` and select **{YourName}_UIB_Test (UIB)**.
-    5. Select **OK**.
+    1. 在 **Explorer**（资源管理器）面板中右键单击项目名称，选择 **Project Settings**。
+    2. 选择 **Test Manager Configuration**（Test Manager 配置）。
+    3. 在 **Test Manager Settings**（Test Manager 设置）下输入 Test Manager URL `{{ training_url }}/{{ training_tenant }}/testmanager_`，然后选择 **Connect**（连接）。状态会变为 **Connected**（已连接）。
+    4. 在 **Default Project**（默认项目）中输入前缀 `UIB`，然后选择 **{YourName}_UIB_Test (UIB)**。
+    5. 选择 **OK**（确定）。
 
-    <video src="../agentic-testing-hands-on.images/studio-connect-test-manager.mp4" autoplay loop muted playsinline controls aria-label="Connecting the Studio project to Test Manager: Project Settings, Test Manager Configuration, entering the Test Manager URL, Connect, selecting the default project, and OK" style="display: block; width: 100%; margin: 1.5rem auto; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 4px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);"></video>
+    <video src="../agentic-testing-hands-on.images/studio-connect-test-manager.mp4" autoplay loop muted playsinline controls aria-label="将 Studio 项目连接到 Test Manager：Project Settings、Test Manager Configuration、输入 Test Manager URL、Connect、选择默认项目，然后 OK" style="display: block; width: 100%; margin: 1.5rem auto; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 4px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);"></video>
 
-=== "With your coding agent"
+=== "使用编码智能体"
 
-    Close the project in Studio, start your coding agent in your workshop folder, and give it this prompt:
+    在 Studio 中关闭项目，在工作坊文件夹中启动编码智能体，然后给它这段提示词：
 
     ```text
     Connect the Studio project in ./{YourName}UiBankTests to Test Manager at
@@ -427,151 +427,151 @@ The project needs to know which Test Manager project its requirements, test case
     (prefix UIB) as the default project, and show me uip rpa tm status.
     ```
 
-    Then reopen the project in Studio. The connection is stored in the project's `.tmh/config.json`, so Studio, Autopilot, and the CLI all use the same one.
+    然后在 Studio 中重新打开项目。连接信息保存在项目的 `.tmh/config.json` 中，因此 Studio、Autopilot 和 CLI 用的都是同一个连接。
 
-### ✅ Check you're ready
+### ✅ 确认准备就绪 { #check-youre-ready }
 
-- Studio shows **{YourName}_UIB_Test** as the default Test Manager project.
-- The **Autopilot** panel opens in Studio.
-- **Test Manager** is open in your browser, on the **{YourName}_UIB_Test** project.
+- Studio 显示 **{YourName}_UIB_Test** 为默认 Test Manager 项目。
+- Studio 中可以打开 **Autopilot** 面板。
+- 浏览器中已打开 **Test Manager**，并位于 **{YourName}_UIB_Test** 项目中。
 
-Your workshop folder now looks like this:
+你的工作坊文件夹现在应该是这样的：
 
 ```text
 workshop/
-├── {YourName}UiBankTests/           ← Studio test automation project, connected to Test Manager
-└── E2E UiBank Online Banking.docx   ← the design document
+├── {YourName}UiBankTests/           ← Studio 测试自动化项目，已连接到 Test Manager
+└── E2E UiBank Online Banking.docx   ← 设计文档
 ```
 
-!!! success "Setup done"
-    A new **{YourName}_UIB_Test** project in Test Manager, and a new test automation project in Studio connected to it. Autopilot can now write requirements straight into it.
+!!! success "环境准备完成"
+    Test Manager 中有了新的 **{YourName}_UIB_Test** 项目，Studio 中也有了与之连接的新测试自动化项目。现在，Autopilot 可以直接把需求写进去了。
 
-## 🚀 Next Steps
+## 🚀 后续步骤 { #next-steps }
 
-<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">What you built, and what to take home</div>
+<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">你构建了什么，以及可以带回去的收获</div>
 
 <div class="feature-grid" markdown>
 
 <div class="feature" markdown>
 <span class="f-icon">📋</span>
-<span class="f-title" markdown="span">Requirements</span>
+<span class="f-title" markdown="span">需求</span>
 
-Eight requirements generated by Autopilot in Studio from one design document, evaluated and improved with Autopilot in Test Manager
+由 Studio 中的 Autopilot 根据一份设计文档生成的八条需求，并经 Test Manager 中的 Autopilot 评估和改进
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🧪</span>
-<span class="f-title" markdown="span">Test Cases</span>
+<span class="f-title" markdown="span">测试用例</span>
 
-Test cases generated by Autopilot in Test Manager; Login automated by hand; more automated by Autopilot in Studio or a coding agent; one autonomous run
+由 Test Manager 中的 Autopilot 生成的测试用例；Login 由你亲手自动化；更多测试用例由 Studio 中的 Autopilot 或编码智能体自动化；外加一次自主运行
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🔎</span>
-<span class="f-title" markdown="span">Executions</span>
+<span class="f-title" markdown="span">执行</span>
 
-Every run recorded with results and evidence, traceable to its requirement
+每次运行都记录了结果和证据，并可追溯到对应的需求
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">📦</span>
-<span class="f-title" markdown="span">Test Sets</span>
+<span class="f-title" markdown="span">测试集</span>
 
-A smoke set and a regression set created by Autopilot and executed on a robot
-
-</div>
+一个冒烟测试集和一个回归测试集，由 Autopilot 创建并在机器人上执行
 
 </div>
 
-**This week**
+</div>
 
-- Run your regression set again tomorrow. Does it still pass? If not, is it the test or UiBank?
-- Automate one of Autopilot's negative test cases, such as a transfer larger than the Checking balance.
+**本周**
 
-**Next 30 days**
+- 明天再跑一次回归测试集。还能通过吗？如果不能，是测试的问题，还是 UiBank 的问题？
+- 自动化 Autopilot 生成的某个反向测试用例，例如转账金额大于 Checking 账户余额。
 
-- Take a real design document from your team and run it through the same parts: requirements, test cases, test sets.
-- Try the other agent: if you used Autopilot for your second test case, automate the next one with a coding agent, or the other way round.
-- Make a test case data-driven, so it runs with several sets of values.
+**未来 30 天**
 
-**Ongoing**
+- 拿一份你们团队真实的设计文档，按同样的几个部分走一遍：需求、测试用例、测试集。
+- 换另一种智能体试试：如果你的第二个测试用例用的是 Autopilot，那就用编码智能体自动化下一个，反之亦然。
+- 把一个测试用例改成数据驱动，让它用多组取值运行。
 
-- Bring your questions. No question is too basic, especially this early.
-- Tell us when something doesn't work. Run `uip feedback send` the moment a skill guesses wrong, a command fails, or a step takes three tries.
+**长期**
 
-## ⚠️ Gotchas you'll hit
+- 带着问题来。没有哪个问题算太基础，尤其是在起步阶段。
+- 遇到问题请告诉我们。一旦技能猜错、命令失败，或者某一步要试三次才成功，马上运行 `uip feedback send`。
 
-Things every QA team learns in the first month.
+## ⚠️ 你会遇到的常见问题 { #gotchas-youll-hit }
+
+每个 QA 团队在第一个月都会学到的事。
 
 <div class="feature-grid" markdown>
 
 <div class="feature" markdown>
 <span class="f-icon">🔍</span>
-<span class="f-title" markdown="span">Trust but verify</span>
+<span class="f-title" markdown="span">信任，但要验证</span>
 
-Autopilot and coding agents are fast and confident. Read the generated requirements, test cases, and assertions: a test that checks nothing passes every time.
+Autopilot 和编码智能体又快又自信。请认真阅读生成的需求、测试用例和断言：一个什么都不检查的测试，每次都会通过。
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🎯</span>
-<span class="f-title" markdown="span">Pick the right agent</span>
+<span class="f-title" markdown="span">选对智能体</span>
 
-Autopilot for what's in front of you in the product. A coding agent for work that spans files, projects, and products.
+产品里眼前的活交给 Autopilot；跨文件、跨项目、跨产品的工作交给编码智能体。
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🧩</span>
-<span class="f-title" markdown="span">Independent test cases</span>
+<span class="f-title" markdown="span">测试用例相互独立</span>
 
-Every test sets up its own data in **Given**. Run them in a different order once to prove it.
+每个测试都在 **Given** 中准备好自己的数据。找机会换个顺序运行一次，证明这一点。
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">✍️</span>
-<span class="f-title" markdown="span">Good manual steps pay twice</span>
+<span class="f-title" markdown="span">好的手动步骤，一举两得</span>
 
-One action and one expected result per step helps Autopilot generate the automation, and run the test case autonomously.
+每个步骤只包含一个操作和一个预期结果，既能帮助 Autopilot 生成自动化，也能帮助它自主运行测试用例。
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🎯</span>
-<span class="f-title" markdown="span">Never hand-write selectors</span>
+<span class="f-title" markdown="span">绝不手写选择器</span>
 
-Capture targets from the live app into the Object Repository. A plausible-looking selector that matches nothing costs more than the capture.
+从运行中的应用捕获目标，存入对象存储库（Object Repository）。一个看似合理却什么都匹配不到的选择器，代价远比捕获一次要高。
 
 </div>
 
 <div class="feature" markdown>
 <span class="f-icon">🌐</span>
-<span class="f-title" markdown="span">One environment</span>
+<span class="f-title" markdown="span">同一个环境</span>
 
-Studio, the CLI, and the browser on the same tenant. Most "Autopilot can't find my project" problems are a Studio signed in somewhere else.
-
-</div>
+Studio、CLI 和浏览器都要在同一个租户上。大多数「Autopilot 找不到我的项目」的问题，都是因为 Studio 登录到了别的地方。
 
 </div>
 
-## ⌨️ Appendix: CLI cheat sheet
+</div>
 
-Commands you'll see a coding agent run with the `uip` CLI, if you use one to generate a test case or run test sets. Add `--output json` to each one.
+## ⌨️ 附录：CLI 速查表 { #appendix-cli-cheat-sheet }
 
-| Command | What it does | When you'll see it |
+如果你用编码智能体生成测试用例或运行测试集，就会看到它通过 `uip` CLI 运行以下命令。每条命令都可以加上 `--output json`。
+
+| 命令 | 作用 | 何时会看到 |
 | :--- | :--- | :--- |
-| `uip skills install` | Install UiPath skills into your coding agent | First-time setup |
-| `uip login` / `uip login status` | Authenticate with your tenant / check the session | Start of each session |
-| `uip tm project list --filter <key>` | Find a Test Manager project | Before any Test Manager work |
-| `uip tm requirements list` / `uip tm testcases list` | List requirements and test cases | Checking coverage |
-| `uip rpa tm connect` / `set-default-project` | Connect a Studio project to Test Manager | Setup |
-| `uip rpa validate` / `uip rpa build` | Check and build the project | After every change |
-| `uip rpa pack` + `uip or packages upload` | Package and publish to Orchestrator | Before running test sets |
-| `uip tm testcases link-automation` | Bind an automation to a Test Manager test case | After publishing |
-| `uip tm testsets run` + `uip tm wait` | Execute a test set and wait for the result | Running test sets |
-| `uip tm report get` / `uip tm result download` | Summarise an execution / download JUnit XML | Reporting |
-| `uip feedback send` | Report a bug or a skill that guessed wrong | Whenever something breaks |
+| `uip skills install` | 将 UiPath skills 安装到你的编码智能体中 | 首次设置 |
+| `uip login` / `uip login status` | 向租户进行身份验证 / 检查会话 | 每次会话开始时 |
+| `uip tm project list --filter <key>` | 查找 Test Manager 项目 | 进行任何 Test Manager 工作之前 |
+| `uip tm requirements list` / `uip tm testcases list` | 列出需求和测试用例 | 检查覆盖率 |
+| `uip rpa tm connect` / `set-default-project` | 将 Studio 项目连接到 Test Manager | 环境准备 |
+| `uip rpa validate` / `uip rpa build` | 检查并构建项目 | 每次修改之后 |
+| `uip rpa pack` + `uip or packages upload` | 打包并发布到 Orchestrator | 运行测试集之前 |
+| `uip tm testcases link-automation` | 将自动化绑定到 Test Manager 测试用例 | 发布之后 |
+| `uip tm testsets run` + `uip tm wait` | 执行测试集并等待结果 | 运行测试集 |
+| `uip tm report get` / `uip tm result download` | 汇总一次执行 / 下载 JUnit XML | 生成报告 |
+| `uip feedback send` | 报告缺陷或猜错的技能 | 任何出问题的时候 |
